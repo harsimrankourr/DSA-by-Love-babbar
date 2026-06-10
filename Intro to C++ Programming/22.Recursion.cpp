@@ -1,3 +1,52 @@
+/*
+recursion is like ik big ya complex problem da solution depend krda hai same type di chhoti problem te
+the we will usee recursion
+
+recursion lyi 2 chyeeza required ne
+base case and recursive case
+
+base case or base condition hunda jihde agge nai jna hunda
+just like ending point
+base case che return likhna mendatory hai
+
+recursive case is like a function
+
+"call stack"
+
+
+in general syntax:
+
+func()
+{
+
+base case
+
+procesing
+
+recursive relation
+
+}
+
+if recursive relation is in last then it is termed as tail recursion
+
+or
+
+func()
+{
+
+base case
+
+recursive relation
+
+procesing
+
+}
+
+if recursive relation is in last then it is termed as head  recursion
+*/
+
+//================================================
+
 // FACTORIAL OF A NUMBER
 
 #include <iostream>
