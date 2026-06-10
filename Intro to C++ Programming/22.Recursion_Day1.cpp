@@ -8,8 +8,11 @@ base case and recursive case
 base case or base condition hunda jihde agge nai jna hunda
 just like ending point
 base case che return likhna mendatory hai
+base case nai use krange ta segmentation fault ajuga te stack overflow hojuga
 
 recursive case is like a function
+
+base case and recursive relation are mendatory components and processing is an optional component 
 
 "call stack"
 
@@ -177,3 +180,6 @@ int main()
 
     return 0;
 }
+
+//==========================================================================
+
