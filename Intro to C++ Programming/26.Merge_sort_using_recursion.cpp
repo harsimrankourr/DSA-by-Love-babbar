@@ -97,7 +97,7 @@ int main()
 //====================================================================================
 
 //space complexity is 0(n)
-//time complexity is 0(log n)
+//time complexity is 0(n log n)
 
 
 
