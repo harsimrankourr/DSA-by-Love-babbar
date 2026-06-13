@@ -93,3 +93,13 @@ int main()
 
     return 0;
 }
+
+//====================================================================================
+
+//space complexity is 0(n)
+//time complexity is 0(log n)
+
+
+
+//inversion count 
+//have to study
