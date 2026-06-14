@@ -3,17 +3,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
-    
+class Solution
+{
+
 private:
     bool isSafe(int x, int y, int n,
                 vector<vector<int>> &visited,
-                vector<vector<int>> &m) {
+                vector<vector<int>> &m)
+    {
 
         if ((x >= 0 && x < n) &&
             (y >= 0 && y < n) &&
             visited[x][y] == 0 &&
-            m[x][y] == 1) {
+            m[x][y] == 1)
+        {
             return true;
         }
 
@@ -26,10 +29,12 @@ private:
                int x,
                int y,
                vector<vector<int>> &visited,
-               string path) {
+               string path)
+    {
 
         // Base case
-        if (x == n - 1 && y == n - 1) {
+        if (x == n - 1 && y == n - 1)
+        {
             ans.push_back(path);
             return;
         }
@@ -40,7 +45,8 @@ private:
         int newx = x + 1;
         int newy = y;
 
-        if (isSafe(newx, newy, n, visited, m)) {
+        if (isSafe(newx, newy, n, visited, m))
+        {
             path.push_back('D');
             solve(m, n, ans, newx, newy, visited, path);
             path.pop_back();
@@ -50,7 +56,8 @@ private:
         newx = x;
         newy = y - 1;
 
-        if (isSafe(newx, newy, n, visited, m)) {
+        if (isSafe(newx, newy, n, visited, m))
+        {
             path.push_back('L');
             solve(m, n, ans, newx, newy, visited, path);
             path.pop_back();
@@ -60,7 +67,8 @@ private:
         newx = x;
         newy = y + 1;
 
-        if (isSafe(newx, newy, n, visited, m)) {
+        if (isSafe(newx, newy, n, visited, m))
+        {
             path.push_back('R');
             solve(m, n, ans, newx, newy, visited, path);
             path.pop_back();
@@ -70,7 +78,8 @@ private:
         newx = x - 1;
         newy = y;
 
-        if (isSafe(newx, newy, n, visited, m)) {
+        if (isSafe(newx, newy, n, visited, m))
+        {
             path.push_back('U');
             solve(m, n, ans, newx, newy, visited, path);
             path.pop_back();
@@ -81,13 +90,15 @@ private:
     }
 
 public:
-    vector<string> ratInMaze(vector<vector<int>> &maze) {
+    vector<string> ratInMaze(vector<vector<int>> &maze)
+    {
 
         vector<string> ans;
         int n = maze.size();
 
         // If starting cell is blocked
-        if (maze[0][0] == 0) {
+        if (maze[0][0] == 0)
+        {
             return ans;
         }
 
