@@ -211,6 +211,18 @@ public:
         cout << "constructor called" << endl;
     }
 
+    // parameterized constructor
+    Hero(int health)
+    {
+        this->health = health;
+    }
+
+    Hero(int health, char level)
+    {
+        this->level = level;
+        this->health = health;
+    }
+
     int getHealth()
     {
         return health;
@@ -236,6 +248,83 @@ int main()
 {
     // object created statically
     cout << "Hi" << endl;
-    Hero batman;
+    Hero batman(10);
     cout << "hello" << endl;
+
+    cout << "address of batman " << &batman << endl;
+    batman.getHealth();
+
+    // dynamically
+    Hero *h = new Hero(11);
+
+    Hero temp(22, 'B');
+}
+
+//===========================================================================
+
+#include <iostream>
+using namespace std;
+
+class Hero
+{
+
+private:
+    int health;
+
+public:
+    // properties
+    char level;
+
+    // constructor called
+    Hero()
+    {
+        cout << "constructor called" << endl;
+    }
+
+    // parameterized constructor
+    Hero(int health)
+    {
+        this->health = health;
+    }
+
+    Hero(int health, char level)
+    {
+        this->level = level;
+        this->health = health;
+    }
+
+    void print()
+    {
+        cout << "health " << this->health << endl;
+        cout << "level " << this->level << endl;
+    }
+
+    int getHealth()
+    {
+        return health;
+    }
+
+    char getLevel()
+    {
+        return level;
+    }
+
+    void setHealth(int h)
+    {
+        health = h;
+    }
+
+    void setLevel(char ch)
+    {
+        level = ch;
+    }
+};
+
+int main()
+{
+    Hero catman(70, 'C');
+    catman.print();
+
+    Hero R(catman);
+    R.print();
 }
