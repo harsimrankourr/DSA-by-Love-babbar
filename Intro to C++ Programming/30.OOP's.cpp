@@ -465,17 +465,16 @@ int main()
 
 //==========================================================================================
 
-//Destructor - Memopry deallocate 
+// Destructor - Memopry deallocate
 
-//jdd v objects out of stock hon wale hunde ne ya ohna da life tine khtam hon wala hunda hai  ta distructor call hunda hai and memory disallocate hundi hai 
-//class create hunde hi distructor create ho jnda hai / aap v create kr skde aan
-//jo class da name houga distructor da v ohi name houga 
-//no return type 
-//no input parameters
- 
- //jo bhi object statically allocate hoya ohde lyi destructor automatically call hunda hai 
- //dynamically allocation wich destructor manually call krna pynda hai 
+// jdd v objects out of stock hon wale hunde ne ya ohna da life tine khtam hon wala hunda hai  ta distructor call hunda hai and memory disallocate hundi hai
+// class create hunde hi distructor create ho jnda hai / aap v create kr skde aan
+// jo class da name houga distructor da v ohi name houga
+// no return type
+// no input parameters
 
+// jo bhi object statically allocate hoya ohde lyi destructor automatically call hunda hai
+// dynamically allocation wich destructor manually call krna pynda hai
 
 #include <iostream>
 #include <cstring>
@@ -553,28 +552,32 @@ public:
         strcpy(this->name, name);
     }
 
-    //Destructor
-    ~Hero(){
+    // Destructor
+    ~Hero()
+    {
         cout << "destructor is called " << endl;
     }
 };
 
 int main()
 {
-   //static
-   Hero a;
+    // static
+    Hero a;
 
-   //dynamic
-   Hero *b = new Hero();
-   //manually destructor called
-   delete b;
+    // dynamic
+    Hero *b = new Hero();
+    // manually destructor called
+    delete b;
 
-   return 0;
+    return 0;
 }
 
 //==================================================================================================
 
-//Static keyword
+// Static keyword
+
+// Creates such a data member which belongs to class
+// ehde data member nu excess krn lyi object bnon di jrurat nai hundi
 
 #include <iostream>
 #include <cstring>
@@ -590,6 +593,7 @@ public:
     // properties
     char *name;
     char level;
+    static int timeToComplete;
 
     // constructor called
     Hero()
@@ -652,21 +656,26 @@ public:
         strcpy(this->name, name);
     }
 
-    //Destructor
-    ~Hero(){
+    // static function can access static member only
+    // so it can not access health, name and level. it only  can access timeToComplete
+
+    static int random()
+    {
+        cout << timeToComplete << endl;
+    }
+    // Destructor
+    ~Hero()
+    {
         cout << "destructor is called " << endl;
     }
 };
 
+int Hero::timeToComplete = 5;
+
 int main()
 {
-   //static
-   Hero a;
 
-   //dynamic
-   Hero *b = new Hero();
-   //manually destructor called
-   delete b;
+    cout << Hero::timeToComplete << endl;
 
-   return 0;
+    return 0;
 }
