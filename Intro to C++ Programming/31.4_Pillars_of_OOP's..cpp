@@ -258,6 +258,7 @@ int main()
 
 // Hierarchical inheritance
 
+/*
 #include <iostream>
 using namespace std;
 
@@ -299,7 +300,7 @@ int main()
 
     B object2;
     object2.func1();
-    object2.func2(); 
+    object2.func2();
 
     C object3;
     object3.func1();
@@ -308,9 +309,54 @@ int main()
     return 0;
     ;
 }
+*/
 
 //================================================================================
 
-//Hybrid inheritance
+// Hybrid inheritance
 
-//combination of more than one type of inheritance
+// combination of more than one type of inheritance
+
+//==============================================================================
+
+// Inheritance Ambiguity
+
+#include <iostream>
+using namespace std;
+
+class A
+{
+
+public:
+    void func()
+    {
+        cout << "I am A" << endl;
+    }
+};
+
+class B
+{
+
+public:
+    void func()
+    {
+        cout << "I am B" << endl;
+    }
+};
+
+class C : public A, public B
+{
+};
+
+int main()
+{
+
+    C obj;
+    // obj.func();
+
+    obj.A::func();
+    obj.B::func();
+
+    return 0;
+}
+//========================================================================================
