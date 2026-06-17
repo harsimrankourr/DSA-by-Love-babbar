@@ -127,6 +127,7 @@ int main()
 
 // single inheritance
 
+/*
 #include <iostream>
 using namespace std;
 
@@ -157,10 +158,12 @@ int main()
     return 0;
 }
 
+*/
 //===============================================================================
 
 // Multilevel inheritajnce
 
+/*
 #include <iostream>
 using namespace std;
 
@@ -195,6 +198,7 @@ int main()
     return 0;
 }
 
+*/
 //====================================================================================
 
 // Multiple inheritance
@@ -372,6 +376,8 @@ int main()
 
 */
 
+// Compile time polymorphism's (static polymorphism) two types
+
 // Function oveerloading
 
 #include <iostream>
@@ -468,5 +474,46 @@ int main()
     return 0;
 }
 
-
 //==============================================================================
+
+// Run time polymorphism (dynamic polymorphism)
+
+// ik particular method nu same naam di different implimentation dehni
+/*
+there are some rule of method/Function implimentation
+    - name of super and sub class must be same
+    - argument of function must be same
+    - inheritance important
+*/
+
+#include <iostream>
+using namespace std;
+
+class Animal
+{
+
+public:
+    void speak()
+    {
+        cout << "speaking" << endl;
+    }
+};
+
+class Dog : public Animal
+{
+
+public:
+    void speak()
+    {
+        cout << "barking" << endl;
+    }
+};
+
+int main()
+{
+
+    Dog obj;
+    obj.speak();
+
+    return 0;
+}
