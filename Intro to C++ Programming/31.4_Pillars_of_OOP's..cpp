@@ -517,3 +517,10 @@ int main()
 
     return 0;
 }
+
+//===============================================================================
+
+//Abstraction 
+    // - implimentation hiding
+    // - showing essential things only
+
