@@ -330,7 +330,7 @@ int main()
 */
 //==========================================================================
 
-// Doubly linked list
+// Insertion and deletion in Doubly linked list
 
 #include <iostream>
 using namespace std;
@@ -348,6 +348,18 @@ public:
         this->data = d;
         this->prev = NULL;
         this->next = NULL;
+    }
+
+    // destructor
+    ~Node()
+    {
+        int val = this->data;
+        if (next != NULL)
+        {
+            delete next;
+            next = NULL;
+        }
+        cout << "memory free for node with data " << val << endl;
     }
 };
 
@@ -447,6 +459,40 @@ void insertAtPosition(Node *&head, Node *&tail, int position, int d)
     nodeToInsert->prev = temp;
 }
 
+void deletion(int position, Node *&head)
+{
+
+    // deleting first or start  node
+    if (position == 1)
+    {
+        Node *temp = head;
+        temp->next->prev = NULL;
+        head = temp->next;
+        temp->next = NULL;
+        delete temp;
+    }
+    else
+    {
+        // deleting any middle node or last node
+        Node *curr = head;
+        Node *prev = NULL;
+
+        int cnt = 1;
+        while (cnt < position)
+        {
+            prev = curr;
+            curr = curr->next;
+            cnt++;
+        }
+
+        curr->prev = NULL;
+        prev->next = curr->next;
+        curr->next = NULL;
+
+        delete curr;
+    }
+}
+
 int main()
 {
 
@@ -496,5 +542,16 @@ int main()
     insertAtPosition(tail, head, 2, 100);
     print(head);
 
+    deletion(1, head);
+    print(head);
+
+    cout << "head " << head->data
+         << endl;
+
+    cout << "tail " << tail->data
+         << endl;
+
     return 0;
 }
+
+//=========================================================================================
