@@ -28,7 +28,17 @@ int main()
 
 ///=======================================================================
 
-// Insertion
+/*
+
+Types of linked list
+    - Singly linked list
+    - Doubly linked list
+    - Circular Linked list
+    - - Circular doubly linked list
+*/
+
+//singular linked list
+// Insertion of ingular linked list
 
 #include <iostream>
 using namespace std;
@@ -147,7 +157,7 @@ int main()
 
 //==========================================================================
 
-// Deletion
+// Deletion of ingular linked list
 
 #include <iostream>
 using namespace std;
@@ -312,3 +322,5 @@ int main()
 }
 
 //==========================================================================
+
+//Doubly linked list
