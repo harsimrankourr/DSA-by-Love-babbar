@@ -101,4 +101,6 @@ cnt++;
 return temp;
 }
 
+//there is an optimised soln is lse
+
 */
