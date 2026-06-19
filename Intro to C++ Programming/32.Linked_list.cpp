@@ -626,11 +626,59 @@ void print(Node *tail)
 
     Node *temp = tail;
 
+    // empty list
+    if (tail == NULL)
+    {
+        cout << "List is  empty" << endl;
+        return;
+    }
+
     do
     {
         cout << tail->data << " ";
         tail = tail->next;
     } while (tail != temp);
+}
+
+void deleteNode(Node *&tail, int value)
+{
+
+    // empty list
+    if (tail == NULL)
+    {
+        cout << "List is empty, please check again" << endl;
+        return;
+    }
+    else
+    {
+        // non-empty
+
+        // assuming the "value" is present in the Linked list
+        Node *prev = tail;
+        Node *curr = prev->next;
+
+        while (curr->data != value)
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+
+        prev->next = curr->next;
+
+        // Linked list having 1 node only
+        if (curr == prev)
+        {
+            tail = NULL;
+        }
+
+        // Linked list having 2 or more than 2 nodes
+        if (tail == curr)
+        {
+            tail = prev;
+        }
+        curr->next = NULL;
+        delete curr;
+    }
 }
 
 int main()
@@ -640,18 +688,29 @@ int main()
 
     insertNode(tail, 5, 3);
     print(tail);
+    cout << endl;
 
     insertNode(tail, 3, 5);
     print(tail);
+    cout << endl;
 
     insertNode(tail, 5, 7);
     print(tail);
+    cout << endl;
 
     insertNode(tail, 5, 6);
     print(tail);
+    cout << endl;
 
     insertNode(tail, 3, 4);
     print(tail);
+    cout << endl;
+
+    deleteNode(tail, 3);
+    print(tail);
+    cout << endl;
 
     return 0;
 }
+
+//=========================================================================================================
