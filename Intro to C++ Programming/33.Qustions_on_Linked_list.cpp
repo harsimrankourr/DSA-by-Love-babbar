@@ -47,4 +47,23 @@ reverse(head, curr, prev);
 return head;
 }
 
+//=====================================================================
+
+//ot it can be 
+
+Node* reverse1(Node* head){
+
+//base case
+if(head == NULL || head -> next == NULL){
+return head;
+}
+
+Node*chotaHead = reverse1(head -> next);
+
+head -> next -> next = head;
+head -> next = NULL;
+
+return chotaHead;
+}
+
 */
