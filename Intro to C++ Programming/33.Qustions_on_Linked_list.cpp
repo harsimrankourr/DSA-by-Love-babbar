@@ -476,6 +476,7 @@ int main()
 //=========================================================================================================
 
 // FLOYD'S CYCLE DETECTION ALGORITHM
+//===================================
 
 //when slow is in the starting of loop and fast is already in the loop, so if after every one iteration of the slow and fast distance between them decrease it means loop/cycle is present in the loop
 
@@ -649,6 +650,7 @@ int main()
 //=====================================================================================
 
 //Get starting Node of the loop and remove the loop from the linked list
+//======================================================================
 
 #include <iostream>
 #include <map>
@@ -888,4 +890,51 @@ int main()
     return 0;
 }
 
-//=========================================================================
+//========================================================================================
+
+//Remove duplicates of a sorted linked list
+//===========================================
+
+/************************************************************
+
+    Following is the linked list node structure.
+    
+    class Node 
+    {
+        public:
+        int data;
+        Node* next;
+
+        Node(int data) 
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+    };
+    
+************************************************************/
+
+Node * uniqueSortedList(Node * head) {
+   	//empty List
+    if(head == NULL)
+        return NULL;
+    
+    //non empty list
+    Node* curr = head;
+    
+    while(curr != NULL) {
+        
+        if( (curr -> next != NULL) && curr -> data == curr -> next -> data) {
+            Node* next_next = curr ->next -> next;
+            Node* nodeToDelete = curr -> next;
+            delete(nodeToDelete);
+            curr -> next = next_next;
+        }
+        else //not equal
+        {
+            curr = curr -> next;
+        }   
+    }
+    
+    return head; 
+}
