@@ -478,7 +478,9 @@ int main()
 // FLOYD'S CYCLE DETECTION ALGORITHM
 //===================================
 
-//when slow is in the starting of loop and fast is already in the loop, so if after every one iteration of the slow and fast distance between them decrease it means loop/cycle is present in the loop
+// when slow is in the starting of loop and fast is already in the loop,
+// so if after every one iteration of the slow and fast distance between them decrease
+// it means loop/cycle is present in the loop
 
 #include <iostream>
 #include <map>
@@ -602,7 +604,7 @@ Node *floydDetectLoop(Node *head)
 
         if (slow == fast)
         {
-            cout << "Present at " << slow -> data << endl;
+            cout << "Present at " << slow->data << endl;
             return slow;
         }
     }
@@ -649,7 +651,7 @@ int main()
 
 //=====================================================================================
 
-//Get starting Node of the loop and remove the loop from the linked list
+// Get starting Node of the loop and remove the loop from the linked list
 //======================================================================
 
 #include <iostream>
@@ -892,49 +894,104 @@ int main()
 
 //========================================================================================
 
-//Remove duplicates of a sorted linked list
+// Remove duplicates of a sorted linked list
 //===========================================
 
-/************************************************************
+/*
 
     Following is the linked list node structure.
-    
-    class Node 
+
+    class Node
     {
         public:
         int data;
         Node* next;
 
-        Node(int data) 
+        Node(int data)
         {
             this->data = data;
             this->next = NULL;
         }
     };
-    
-************************************************************/
 
-Node * uniqueSortedList(Node * head) {
-   	//empty List
-    if(head == NULL)
+*/
+
+Node *uniqueSortedList(Node *head)
+{
+    // empty List
+    if (head == NULL)
         return NULL;
-    
-    //non empty list
-    Node* curr = head;
-    
-    while(curr != NULL) {
-        
-        if( (curr -> next != NULL) && curr -> data == curr -> next -> data) {
-            Node* next_next = curr ->next -> next;
-            Node* nodeToDelete = curr -> next;
-            delete(nodeToDelete);
-            curr -> next = next_next;
-        }
-        else //not equal
+
+    // non empty list
+    Node *curr = head;
+
+    while (curr != NULL)
+    {
+
+        if ((curr->next != NULL) && curr->data == curr->next->data)
         {
-            curr = curr -> next;
-        }   
+            Node *next_next = curr->next->next;
+            Node *nodeToDelete = curr->next;
+            delete (nodeToDelete);
+            curr->next = next_next;
+        }
+        else // not equal
+        {
+            curr = curr->next;
+        }
     }
-    
-    return head; 
+
+    return head;
 }
+
+//====================================================================
+
+// Remove duplicated from Unsorted list
+//====================================
+
+//approach 1
+Node *sortList(Node *head)
+{
+    int zeroCount = 0;
+    int oneCount = 0;
+    int twoCount = 0;
+
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        if (temp->data == 0)
+            zeroCount++;
+        else if (temp->data == 1)
+            oneCount++;
+        else if (temp->data == 2)
+            twoCount++;
+
+        temp = temp->next;
+    }
+
+    temp = head;
+    while (temp != NULL)
+    {
+        if (zeroCount != 0)
+        {
+            temp->data = 0;
+            zeroCount--;
+        }
+        else if (oneCount != 0)
+        {
+            temp->data = 1;
+            oneCount--;
+        }
+        else if (twoCount != 0)
+        {
+            temp->data = 2;
+            twoCount--;
+        }
+        temp = temp->next;
+    }
+    return head;
+}
+
+//==========================================
+
+
