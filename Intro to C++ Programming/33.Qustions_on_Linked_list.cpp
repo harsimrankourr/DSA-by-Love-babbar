@@ -648,7 +648,8 @@ int main()
 
 //=====================================================================================
 
-//Get starting Node of the loop
+//Get starting Node of the loop and remove the loop from the linked list
+
 #include <iostream>
 #include <map>
 using namespace std;
