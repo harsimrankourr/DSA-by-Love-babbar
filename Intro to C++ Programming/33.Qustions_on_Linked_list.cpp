@@ -1297,6 +1297,8 @@ class Solution
 //Clone a linked list on geeks for geeks
 //======================================
 
+// here arb points to the random pointer
+
 /*
 class Solution
 {
