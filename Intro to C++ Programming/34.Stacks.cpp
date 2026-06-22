@@ -1,3 +1,9 @@
+//Introduction to stack
+//====================
+
+//stack is a linear type of data structure that follows the LIFO principle
+//LIFO - last in first out
+
 #include<iostream>
 #include<stack>
 using namespace std;
@@ -114,7 +120,6 @@ int main() {
     cout << "size of stack is " << s.size() << endl;
 
     */
-
     return 0;
 
 }
@@ -185,3 +190,40 @@ public:
     }
 
 };
+
+///==============================================================================
+
+//Reverse a string using stack
+//============================
+
+#include<iostream>
+#include<stack>
+using namespace std;
+
+
+
+int main () {
+    string str = "babbar";
+
+    stack<char> s;
+
+    for (int i = 0; i<str.length(); i++) {
+        char ch = str[i];
+        s.push(ch);
+    }
+
+    string ans = "";
+
+    while(!s.empty()) {
+        char ch = s.top();
+        ans.push_back(ch);
+
+        s.pop();
+    }
+
+    cout << "answer is: "<< ans << endl;
+
+    return 0;
+
+    //===========================================================================
+}
