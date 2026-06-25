@@ -1,48 +1,57 @@
-//Introduction to stack
+// Introduction to stack
 //====================
 
-//stack is a linear type of data structure that follows the LIFO principle
-//LIFO - last in first out
+// stack is a linear type of data structure that follows the LIFO principle
+// LIFO - last in first out
 
-#include<iostream>
-#include<stack>
+#include <iostream>
+#include <stack>
 using namespace std;
 
-class Stack {
-    //properties
-    public:
-        int *arr;
-        int top;
-        int size;
+class Stack
+{
+    // properties
+public:
+    int *arr;
+    int top;
+    int size;
 
     // behaviour
-    Stack(int size) {
-        this -> size = size;
+    Stack(int size)
+    {
+        this->size = size;
         arr = new int[size];
         top = -1;
     }
 
-    void push( int element) {
-        if(size - top > 1) {
+    void push(int element)
+    {
+        if (size - top > 1)
+        {
             top++;
             arr[top] = element;
         }
-        else{
+        else
+        {
             cout << "Stack OverFlow" << endl;
         }
     }
 
-    void pop() {
-        if(top >=0 ) {
+    void pop()
+    {
+        if (top >= 0)
+        {
             top--;
         }
-        else{
+        else
+        {
             cout << "Stack UnderFlow" << endl;
         }
     }
 
-    int peek() {
-        if(top >=0 )
+    int peek()
+    {
+        if (top >= 0)
             return arr[top];
         else
         {
@@ -51,20 +60,21 @@ class Stack {
         }
     }
 
-    bool isEmpty() {
-        if( top == -1) {
+    bool isEmpty()
+    {
+        if (top == -1)
+        {
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
     }
-
 };
 
-
-int main() {
-
+int main()
+{
 
     Stack st(5);
 
@@ -89,14 +99,15 @@ int main() {
 
     cout << st.peek() << endl;
 
-    if(st.isEmpty()) {
+    if (st.isEmpty())
+    {
         cout << "Stack is Empty mere dost " << endl;
     }
-    else{
+    else
+    {
         cout << "Stack is not Empty mere dost " << endl;
     }
 
-    
     /*
     //creation of stack
     stack<int> s;
@@ -121,51 +132,56 @@ int main() {
 
     */
     return 0;
-
 }
 
 //=====================================================================================
 
-//two stacks
+// two stacks
 //==========
 
-class TwoStack {
-	int *arr;
+class TwoStack
+{
+    int *arr;
     int top1;
     int top2;
     int size;
-public:
 
+public:
     // Initialize TwoStack.
-    TwoStack(int s) {
-        this -> size = s;
+    TwoStack(int s)
+    {
+        this->size = s;
         top1 = -1;
         top2 = s;
         arr = new int[s];
     }
-    
+
     // Push in stack 1.
-    void push1(int num) {
-        //atleast a empty space present
-        if(top2 - top1 > 1 ) {
+    void push1(int num)
+    {
+        // atleast a empty space present
+        if (top2 - top1 > 1)
+        {
             top1++;
             arr[top1] = num;
-        } 
-       
+        }
     }
 
     // Push in stack 2.
-    void push2(int num) {
-         if(top2 - top1 > 1 ) {
+    void push2(int num)
+    {
+        if (top2 - top1 > 1)
+        {
             top2--;
             arr[top2] = num;
-        } 
-       
+        }
     }
 
     // Pop from stack 1 and return popped element.
-    int pop1() {
-		if( top1 >= 0) {
+    int pop1()
+    {
+        if (top1 >= 0)
+        {
             int ans = arr[top1];
             top1--;
             return ans;
@@ -177,8 +193,10 @@ public:
     }
 
     // Pop from stack 2 and return popped element.
-    int pop2() {
-		if( top2 < size) {
+    int pop2()
+    {
+        if (top2 < size)
+        {
             int ans = arr[top2];
             top2++;
             return ans;
@@ -188,143 +206,146 @@ public:
             return -1;
         }
     }
-
 };
 
 ///==============================================================================
 
-//Reverse a string using stack
+// Reverse a string using stack
 //============================
 
-#include<iostream>
-#include<stack>
+#include <iostream>
+#include <stack>
 using namespace std;
 
-
-
-int main () {
+int main()
+{
     string str = "babbar";
 
     stack<char> s;
 
-    for (int i = 0; i<str.length(); i++) {
+    for (int i = 0; i < str.length(); i++)
+    {
         char ch = str[i];
         s.push(ch);
     }
 
     string ans = "";
 
-    while(!s.empty()) {
+    while (!s.empty())
+    {
         char ch = s.top();
         ans.push_back(ch);
 
         s.pop();
     }
 
-    cout << "answer is: "<< ans << endl;
+    cout << "answer is: " << ans << endl;
 
     return 0;
 
     //===========================================================================
 }
-//Delete middle element of the stack
+// Delete middle element of the stack
 //==================================
 
-
-void solve(stack<int>&inputStack, int count, int size) {
-    //base case
-    if(count == size/2) {
+void solve(stack<int> &inputStack, int count, int size)
+{
+    // base case
+    if (count == size / 2)
+    {
         inputStack.pop();
-        return ;
+        return;
     }
-    
+
     int num = inputStack.top();
     inputStack.pop();
-    
-	//RECURSIVE CALL
-    solve(inputStack, count+1, size);
-    
+
+    // RECURSIVE CALL
+    solve(inputStack, count + 1, size);
+
     inputStack.push(num);
-    
 }
 
-void deleteMiddle(stack<int>&inputStack, int N){
-	
-  	int count = 0;
+void deleteMiddle(stack<int> &inputStack, int N)
+{
+
+    int count = 0;
     solve(inputStack, count, N);
-   
 }
 
 //===========================================================================
 
-//Valid parentheses
+// Valid parentheses
 //=================
-
-
 
 bool isValidParenthesis(string expression)
 {
-  	 stack<char> s;
-     for(int i=0; i<expression.length(); i++) {
-         
-         char ch = expression[i];
-         
-         //if opening bracket, stack push
-         //if close bracket, stacktop check and pop
-         
-         if(ch == '(' || ch == '{' || ch == '['){
-             s.push(ch);
-         }
-         else
-         {
-             //for closing bracket
-             if(!s.empty()) {
-                  char top = s.top();
-                  if( (ch == ')' && top == '(') || 
-                     ( ch == '}' && top == '{') || 
-                     (ch == ']' && top == '[') ) {
-                      s.pop();
-                  }
-                 else
-                 {
-                     return false;
-                 }
-             }
-             else
-             {
-                 return false;
-             } 
-         }  
-     }
-    
-    if(s.empty())
+    stack<char> s;
+    for (int i = 0; i < expression.length(); i++)
+    {
+
+        char ch = expression[i];
+
+        // if opening bracket, stack push
+        // if close bracket, stacktop check and pop
+
+        if (ch == '(' || ch == '{' || ch == '[')
+        {
+            s.push(ch);
+        }
+        else
+        {
+            // for closing bracket
+            if (!s.empty())
+            {
+                char top = s.top();
+                if ((ch == ')' && top == '(') ||
+                    (ch == '}' && top == '{') ||
+                    (ch == ']' && top == '['))
+                {
+                    s.pop();
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    if (s.empty())
         return true;
     else
         return false;
 }
 //======================================================================
 
-//insert an element at the bottom of the stack
+// insert an element at the bottom of the stack
 //============================================
 
-void solve(stack<int>& s, int x) {
-    //base case
-    if(s.empty()) {
+void solve(stack<int> &s, int x)
+{
+    // base case
+    if (s.empty())
+    {
         s.push(x);
-        return ;
+        return;
     }
-    
+
     int num = s.top();
     s.pop();
-    
-    //recursive call
+
+    // recursive call
     solve(s, x);
-    
+
     s.push(num);
 }
 
-
-stack<int> pushAtBottom(stack<int>& myStack, int x) 
+stack<int> pushAtBottom(stack<int> &myStack, int x)
 {
     solve(myStack, x);
     return myStack;
@@ -332,142 +353,156 @@ stack<int> pushAtBottom(stack<int>& myStack, int x)
 
 //======================================================================
 
-//Reverse stack using recursion
+// Reverse stack using recursion
 //=============================
 
-
-void insertAtBottom(stack<int> &s, int element) {
-    //basecase
-    if(s.empty()) {
+void insertAtBottom(stack<int> &s, int element)
+{
+    // basecase
+    if (s.empty())
+    {
         s.push(element);
-      	return ;
+        return;
     }
-    
+
     int num = s.top();
     s.pop();
-    
-    //recursive call
+
+    // recursive call
     insertAtBottom(s, element);
-    
+
     s.push(num);
 }
 
-void reverseStack(stack<int> &stack) {
-  	//base case
-    if(stack.empty()) {
-        return ;
+void reverseStack(stack<int> &stack)
+{
+    // base case
+    if (stack.empty())
+    {
+        return;
     }
-    
+
     int num = stack.top();
     stack.pop();
-    
-    //recursive call
+
+    // recursive call
     reverseStack(stack);
-    
-    insertAtBottom(stack,num);
+
+    insertAtBottom(stack, num);
 }
 
 //==========================================================================
 
-//sort a stack
+// sort a stack
 //============
 
-void sortedInsert(stack<int> &stack, int num) {
-    //base case
-    if(stack.empty() || (!stack.empty() && stack.top() < num) ) {
+void sortedInsert(stack<int> &stack, int num)
+{
+    // base case
+    if (stack.empty() || (!stack.empty() && stack.top() < num))
+    {
         stack.push(num);
         return;
     }
-    
+
     int n = stack.top();
     stack.pop();
-    
-    //recusrive call
+
+    // recusrive call
     sortedInsert(stack, num);
-    
+
     stack.push(n);
 }
 
 void sortStack(stack<int> &stack)
 {
-		//base case
-    	if(stack.empty()) {
-            return ;
-        }
-    
-    	int num = stack.top();
-    	stack.pop();
-    
-    	//recursive call
-    	sortStack(stack);
-    
-    	sortedInsert(stack, num);
+    // base case
+    if (stack.empty())
+    {
+        return;
+    }
+
+    int num = stack.top();
+    stack.pop();
+
+    // recursive call
+    sortStack(stack);
+
+    sortedInsert(stack, num);
 }
 
 //===================================================================
 
-//Redundant bracket
+// Redundant bracket
 //=================
 
-#include<stack>
+#include <stack>
 
 bool findRedundantBrackets(string &s)
 {
     stack<char> st;
-    for(int i=0; i<s.length(); i++) {
-        char ch =s[i];
-        
-        if(ch == '(' || ch == '+' ||ch == '-' || ch == '*' || ch == '/') {
+    for (int i = 0; i < s.length(); i++)
+    {
+        char ch = s[i];
+
+        if (ch == '(' || ch == '+' || ch == '-' || ch == '*' || ch == '/')
+        {
             st.push(ch);
         }
         else
         {
-            //ch ya toh ')' hai or lowercase letter
-            
-            if(ch == ')') {
+            // ch ya toh ')' hai or lowercase letter
+
+            if (ch == ')')
+            {
                 bool isRedundant = true;
-                
-                while(st.top() != '(') {
+
+                while (st.top() != '(')
+                {
                     char top = st.top();
-                    if(top == '+' ||top == '-' || top == '*' || top == '/') {
+                    if (top == '+' || top == '-' || top == '*' || top == '/')
+                    {
                         isRedundant = false;
                     }
                     st.pop();
                 }
-                
-                if(isRedundant == true)
+
+                if (isRedundant == true)
                     return true;
                 st.pop();
             }
-            
-        } 
+        }
     }
     return false;
 }
 
 //================================================================================
 
-//valid braces or braces reversal
+// valid braces or braces reversal
 //==============================
 
-#include<stack>
-int findMinimumCost(string str) {
-  	
-    //odd condition
-    if(str.length()%2 == 1) {
+#include <stack>
+int findMinimumCost(string str)
+{
+
+    // odd condition
+    if (str.length() % 2 == 1)
+    {
         return -1;
     }
-    
+
     stack<char> s;
-    for(int i=0; i<str.length(); i++) {
+    for (int i = 0; i < str.length(); i++)
+    {
         char ch = str[i];
-        
-        if(ch == '{') 
+
+        if (ch == '{')
             s.push(ch);
-		else
+        else
         {
-            //ch is closed brace
-            if(!s.empty() && s.top() == '{') {
+            // ch is closed brace
+            if (!s.empty() && s.top() == '{')
+            {
                 s.pop();
             }
             else
@@ -476,29 +511,29 @@ int findMinimumCost(string str) {
             }
         }
     }
-    
-        //stack contains invalid expression
-        int a = 0, b = 0;
-        while(!s.empty()) {
-            if(s.top() == '{') {
-                b++;
-            }
-            else
-            {
-                a++;
-            }
-            s.pop();
+
+    // stack contains invalid expression
+    int a = 0, b = 0;
+    while (!s.empty())
+    {
+        if (s.top() == '{')
+        {
+            b++;
         }
-        
-		int ans = (a+1)/2 + (b+1)/2;
-        return ans;
-    
-    
+        else
+        {
+            a++;
+        }
+        s.pop();
+    }
+
+    int ans = (a + 1) / 2 + (b + 1) / 2;
+    return ans;
 }
 
 //==============================================================================
 
-//find next smaller element
+// find next smaller element
 //=========================
 
 /*
@@ -508,7 +543,7 @@ vector<int> nextSmallerElement(vector<int> &arr, int n)
     stack<int> s;
     s.push(-1);
     vector<int> ans(n);
-    
+
     for(int i=n-1; i>=0 ; i--) {
         int curr = arr[i];
         while(s.top() >= curr)
@@ -525,7 +560,7 @@ vector<int> nextSmallerElement(vector<int> &arr, int n)
 
 //======================================================================
 
-//Largest rectangle in histogram
+// Largest rectangle in histogram
 //===============================
 
 /*
@@ -548,7 +583,7 @@ private:
         }
         return ans;
     }
-    
+
     vector<int> prevSmallerElement(vector<int> arr, int n) {
         stack<int> s;
         s.push(-1);
@@ -564,23 +599,23 @@ private:
             ans[i] = s.top();
             s.push(i);
         }
-        return ans; 
+        return ans;
     }
-    
+
 public:
     int largestRectangleArea(vector<int>& heights) {
         int n= heights.size();
-        
+
         vector<int> next(n);
         next = nextSmallerElement(heights, n);
-            
+
         vector<int> prev(n);
         prev = prevSmallerElement(heights, n);
-        
+
         int area = INT_MIN;
         for(int i=0; i<n; i++) {
             int l = heights[i];
-            
+
             if(next[i] == -1) {
                 next[i] = n;
             }
@@ -594,7 +629,7 @@ public:
 */
 //===============================================================================
 
-//The celebrity problem
+// The celebrity problem
 //=====================
 /*
 //Initial template for C++
@@ -605,7 +640,7 @@ using namespace std;
  // } Driver Code Ends
 //User function template for C++
 
-class Solution 
+class Solution
 {
     private:
     bool knows(vector<vector<int> >& M, int a, int b, int n) {
@@ -616,24 +651,24 @@ class Solution
     }
     public:
     //Function to find if there is a celebrity in the party or not.
-    int celebrity(vector<vector<int> >& M, int n) 
+    int celebrity(vector<vector<int> >& M, int n)
     {
         stack<int> s;
         //step1: push all element in stack
         for(int i=0; i<n; i++) {
             s.push(i);
-        }   
-        
+        }
+
         //step2: get 2 elements and copare them
-        
+
         while(s.size() > 1) {
-            
+
             int a = s.top();
             s.pop();
-            
+
             int b = s.top();
             s.pop();
-            
+
             if(knows(M,a,b,n)){
                 s.push(b);
             }
@@ -645,31 +680,31 @@ class Solution
         int ans = s.top();
         //step3: single element in stack is potential celeb
         //so verify it
-        
+
         int zeroCount = 0;
-        
+
         for(int i=0; i<n; i++) {
             if(M[ans][i] == 0)
                 zeroCount++;
         }
-        
+
         //all zeroes
         if(zeroCount != n)
             return -1;
-        
+
         //column check
         int oneCount = 0;
-        
+
         for(int i=0; i<n; i++) {
             if(M[i][ans] == 1)
                 oneCount++;
         }
-        
+
         if(oneCount != n-1)
             return -1;
-        
+
         return ans;
-        
+
     }
 };
 
@@ -698,120 +733,130 @@ int main()
 }
   // } Driver Code Ends
 */
-  //====================================================================
+//====================================================================
 
-  //max rectangle
-  //=============
+// max rectangle
+//=============
 
-  #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 #define MAX 1000
 
-
- // } Driver Code Ends
+// } Driver Code Ends
 /*You are required to complete this method*/
 
-class Solution{
-  private:
-  
-  vector<int> nextSmallerElement(int *arr, int n) {
+class Solution
+{
+private:
+    vector<int> nextSmallerElement(int *arr, int n)
+    {
         stack<int> s;
         s.push(-1);
         vector<int> ans(n);
 
-        for(int i=n-1; i>=0 ; i--) {
+        for (int i = n - 1; i >= 0; i--)
+        {
             int curr = arr[i];
-            while(s.top() != -1 && arr[s.top()] >= curr)
+            while (s.top() != -1 && arr[s.top()] >= curr)
             {
                 s.pop();
             }
-            //ans is stack ka top
+            // ans is stack ka top
             ans[i] = s.top();
             s.push(i);
         }
         return ans;
     }
-    
-    vector<int> prevSmallerElement(int* arr, int n) {
+
+    vector<int> prevSmallerElement(int *arr, int n)
+    {
         stack<int> s;
         s.push(-1);
         vector<int> ans(n);
 
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             int curr = arr[i];
-            while(s.top() != -1 && arr[s.top()] >= curr)
+            while (s.top() != -1 && arr[s.top()] >= curr)
             {
                 s.pop();
             }
-            //ans is stack ka top
+            // ans is stack ka top
             ans[i] = s.top();
             s.push(i);
         }
-        return ans; 
-    }    
-    
-  
-  
-  int largestRectangleArea(int* heights, int n) {
-        //int n= heights.size();
-        
+        return ans;
+    }
+
+    int largestRectangleArea(int *heights, int n)
+    {
+        // int n= heights.size();
+
         vector<int> next(n);
         next = nextSmallerElement(heights, n);
-            
+
         vector<int> prev(n);
         prev = prevSmallerElement(heights, n);
-        
+
         int area = INT_MIN;
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             int l = heights[i];
-            
-            if(next[i] == -1) {
+
+            if (next[i] == -1)
+            {
                 next[i] = n;
             }
-             int b = next[i] - prev[i] - 1;
-            int newArea = l*b;
+            int b = next[i] - prev[i] - 1;
+            int newArea = l * b;
             area = max(area, newArea);
         }
         return area;
     }
-  public:
-    int maxArea(int M[MAX][MAX], int n, int m) {
-        
-        //compute area for first row
+
+public:
+    int maxArea(int M[MAX][MAX], int n, int m)
+    {
+
+        // compute area for first row
         int area = largestRectangleArea(M[0], m);
-        
-        for(int i = 1; i<n; i++) {
-            for(int j = 0; j<m; j++) {
-                
-                //row udpate: by adding previous row's value
-                if(M[i][j] != 0)
-                    M[i][j] = M[i][j] + M[i-1][j];
+
+        for (int i = 1; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
+
+                // row udpate: by adding previous row's value
+                if (M[i][j] != 0)
+                    M[i][j] = M[i][j] + M[i - 1][j];
                 else
                     M[i][j] = 0;
             }
-            
-            //entire row is updated now
-            area = max(area, largestRectangleArea(M[i],m));
-            
+
+            // entire row is updated now
+            area = max(area, largestRectangleArea(M[i], m));
         }
         return area;
     }
 };
 
-
 // { Driver Code Starts.
-int main() {
+int main()
+{
     int T;
     cin >> T;
 
     int M[MAX][MAX];
 
-    while (T--) {
+    while (T--)
+    {
         int n, m;
         cin >> n >> m;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+            {
                 cin >> M[i][j];
             }
         }
@@ -819,11 +864,11 @@ int main() {
         cout << obj.maxArea(M, n, m) << endl;
     }
 }
-  // } Driver Code Ends
+// } Driver Code Ends
 
 //========================================================================
 
-//N stacks in an array
+// N stacks in an array
 //====================
 
 class NStack
@@ -831,11 +876,11 @@ class NStack
     int *arr;
     int *top;
     int *next;
-    
+
     int n, s;
-     
+
     int freespot;
-    
+
 public:
     // Initialize your data structure.
     NStack(int N, int S)
@@ -845,96 +890,102 @@ public:
         arr = new int[s];
         top = new int[n];
         next = new int[s];
-        
-        //top initialise
-        for(int i=0; i<n; i++) {
+
+        // top initialise
+        for (int i = 0; i < n; i++)
+        {
             top[i] = -1;
         }
-        
-        //next initialise
-        for(int i=0; i<s; i++) {
-            next[i] = i+1;
+
+        // next initialise
+        for (int i = 0; i < s; i++)
+        {
+            next[i] = i + 1;
         }
-        //update last index value to -1
-        next[s-1] = -1;
-        
-        //initialise freespot
+        // update last index value to -1
+        next[s - 1] = -1;
+
+        // initialise freespot
         freespot = 0;
-        
     }
 
     // Pushes 'X' into the Mth stack. Returns true if it gets pushed into the stack, and false otherwise.
     bool push(int x, int m)
     {
-        //check for overflow
-        if(freespot == -1) {
+        // check for overflow
+        if (freespot == -1)
+        {
             return false;
         }
-        
-        //find index
+
+        // find index
         int index = freespot;
-        
-        //insert element into array
+
+        // insert element into array
         arr[index] = x;
-        
-        //update freespot
+
+        // update freespot
         freespot = next[index];
-       
-        //update next;
-        next[index] = top[m-1];
-        
-        //update top
-        top[m-1] = index;
-        
+
+        // update next;
+        next[index] = top[m - 1];
+
+        // update top
+        top[m - 1] = index;
+
         return true;
     }
 
     // Pops top element from Mth Stack. Returns -1 if the stack is empty, otherwise returns the popped element.
     int pop(int m)
     {
-        //check underflow condition
-        if(top[m-1] == -1) {
+        // check underflow condition
+        if (top[m - 1] == -1)
+        {
             return -1;
         }
-        
-        int index= top[m-1];
-        
-        top[m-1] = next[index];
-        
+
+        int index = top[m - 1];
+
+        top[m - 1] = next[index];
+
         next[index] = freespot;
-        
+
         freespot = index;
-        
+
         return arr[index];
     }
 };
 
 //===================================================================================
 
-//Design a stack that support getMin() in O(1) tome and O(1) space complexity
+// Design a stack that support getMin() in O(1) tome and O(1) space complexity
 //===========================================================================
 
-#include<stack>
-#include<limits.h>
-class SpecialStack {
+#include <stack>
+#include <limits.h>
+class SpecialStack
+{
     // Define the data members.
-	stack<int> s;
+    stack<int> s;
     int mini = INT_MAX;
     /*----------------- Public Functions of SpecialStack -----------------*/
-    public:
-        
-    void push(int data) {
-        //for first element
-        if(s.empty()) {
+public:
+    void push(int data)
+    {
+        // for first element
+        if (s.empty())
+        {
             s.push(data);
             mini = data;
         }
         else
         {
-         	if(data < mini) {
-                s.push(2*data - mini);
+            if (data < mini)
+            {
+                s.push(2 * data - mini);
                 mini = data;
-            }   
+            }
             else
             {
                 s.push(data);
@@ -942,31 +993,36 @@ class SpecialStack {
         }
     }
 
-    int pop() {
-        if(s.empty()){
+    int pop()
+    {
+        if (s.empty())
+        {
             return -1;
         }
-        
+
         int curr = s.top();
         s.pop();
-        if(curr > mini) {
+        if (curr > mini)
+        {
             return curr;
         }
         else
         {
             int prevMin = mini;
-            int val = 2*mini - curr;
+            int val = 2 * mini - curr;
             mini = val;
             return prevMin;
         }
     }
 
-    int top() {
-        if(s.empty())
+    int top()
+    {
+        if (s.empty())
             return -1;
-        
+
         int curr = s.top();
-        if(curr < mini) {
+        if (curr < mini)
+        {
             return mini;
         }
         else
@@ -975,16 +1031,18 @@ class SpecialStack {
         }
     }
 
-    bool isEmpty() {
+    bool isEmpty()
+    {
         return s.empty();
     }
 
-    int getMin() {
-        if(s.empty())
+    int getMin()
+    {
+        if (s.empty())
             return -1;
-        
+
         return mini;
-    }  
+    }
 };
 
 //==========================================================================================
