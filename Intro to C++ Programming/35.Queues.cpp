@@ -1,3 +1,10 @@
+/*
+QUEUE
+    queue is a liner data structure that manage data elements according to FIFO principle.
+    First in first out.
+
+*/
+
 #include <iostream>
 #include <queue>
 using namespace std;
