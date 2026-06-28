@@ -253,11 +253,11 @@ int main()
 */
 //===================================================================
 
-//Circular tour
+// Circular tour
 //=============
 
 // { Driver Code Starts
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct petrolPump
@@ -266,10 +266,9 @@ struct petrolPump
     int distance;
 };
 
-
- // } Driver Code Ends
+// } Driver Code Ends
 /*
-The structure of petrolPump is 
+The structure of petrolPump is
 struct petrolPump
 {
     int petrol;
@@ -277,155 +276,163 @@ struct petrolPump
 };*/
 
 /*You are required to complete this method*/
-class Solution{
-  public:
-  
-    //Function to find starting point where the truck can start to get through
-    //the complete circle without exhausting its petrol in between.
-    int tour(petrolPump p[],int n)
+class Solution
+{
+public:
+    // Function to find starting point where the truck can start to get through
+    // the complete circle without exhausting its petrol in between.
+    int tour(petrolPump p[], int n)
     {
-       int deficit = 0;
-       int balance = 0;
-       int start = 0;
-       
-       for(int i=0; i<n; i++) {
-           balance += p[i].petrol - p[i].distance;
-           if(balance < 0) {
-               start = i+1;
-               deficit += balance;
-               balance = 0;
-           }
-       }
-       
-       if(balance + deficit >=0) 
+        int deficit = 0;
+        int balance = 0;
+        int start = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            balance += p[i].petrol - p[i].distance;
+            if (balance < 0)
+            {
+                start = i + 1;
+                deficit += balance;
+                balance = 0;
+            }
+        }
+
+        if (balance + deficit >= 0)
             return start;
         return -1;
-       
     }
 };
-
-
 
 // { Driver Code Starts.
 
 int main()
 {
     int t;
-    cin>>t;
-    while(t--)
+    cin >> t;
+    while (t--)
     {
         int n;
-        cin>>n;
+        cin >> n;
         petrolPump p[n];
-        for(int i=0;i<n;i++)
-            cin>>p[i].petrol>>p[i].distance;
+        for (int i = 0; i < n; i++)
+            cin >> p[i].petrol >> p[i].distance;
         Solution obj;
-        cout<<obj.tour(p,n)<<endl;
+        cout << obj.tour(p, n) << endl;
     }
 }
-  // } Driver Code Ends
+// } Driver Code Ends
 
-  //==================================================================================
+//==================================================================================
 
-  //K queues in an array
-  //====================
+// K queues in an array
+//====================
 
-  #include<iostream>
+#include <iostream>
 using namespace std;
 
-class kQueue {
+class kQueue
+{
 
-    public:
-        int n;
-        int k;
-        int *front;
-        int *rear;
-        int *arr;
-        int freeSpot;
-        int *next;
+public:
+    int n;
+    int k;
+    int *front;
+    int *rear;
+    int *arr;
+    int freeSpot;
+    int *next;
 
-    public:
-        kQueue(int n, int k) {
-            this -> n = n;
-            this -> k = k;
-            front = new int[k];
-            rear = new int[k];
-            for(int i=0; i<k; i++) {
-                front[i] = -1;
-                rear[i] = -1;
-            }
+public:
+    kQueue(int n, int k)
+    {
+        this->n = n;
+        this->k = k;
+        front = new int[k];
+        rear = new int[k];
+        for (int i = 0; i < k; i++)
+        {
+            front[i] = -1;
+            rear[i] = -1;
+        } 
 
-            next = new int[n];
-            for(int i=0; i<n; i++) {
-                next[i] = i+1;
-            }
-            next[n-1] = -1;
-            arr = new int[n];
-            freeSpot = 0;
-        }    
+        next = new int[n];
+        for (int i = 0; i < n; i++)
+        {
+            next[i] = i + 1;
+        }
+        next[n - 1] = -1;
+        arr = new int[n];
+        freeSpot = 0;
+    }
 
-        void enqueue(int data, int qn) {
+    void enqueue(int data, int qn)
+    {
 
-            //overflow
-            if( freeSpot == -1) {
-                cout << "No Empty space is present" << endl;
-                return;
-            }
-
-            //find first free index
-            int index = freeSpot;
-
-            //update freespot
-            freeSpot = next[index];
-
-            //check whther first element
-            if(front[qn-1] == -1){
-                front[qn-1] = index;
-            }
-            else{
-                //link new element to the prev element
-                next[rear[qn-1]] = index;
-            }
-
-            //update next
-            next[index] = -1;
-
-            //update rear
-            rear[qn-1] = index;
-
-            //push element
-            arr[index] = data;
+        // overflow
+        if (freeSpot == -1)
+        {
+            cout << "No Empty space is present" << endl;
+            return;
         }
 
-        int dequeue(int qn) {
-            //underflow 
-            if(front[qn-1] == -1)
-            {
-                cout << "Queue UnderFlow " << endl;
-                return -1;
-            }
+        // find first free index
+        int index = freeSpot;
 
-            //find index to pop
-            int index = front[qn-1];
+        // update freespot
+        freeSpot = next[index];
 
-            //front ko aage badhao
-            front[qn-1] = next[index];
-
-            //freeSlots ko manage karo
-            next[index] = freeSpot;
-            freeSpot = index;
-            return arr[index];
+        // check whther first element
+        if (front[qn - 1] == -1)
+        {
+            front[qn - 1] = index;
+        }
+        else
+        {
+            // link new element to the prev element
+            next[rear[qn - 1]] = index;
         }
 
+        // update next
+        next[index] = -1;
+
+        // update rear
+        rear[qn - 1] = index;
+
+        // push element
+        arr[index] = data;
+    }
+
+    int dequeue(int qn)
+    {
+        // underflow
+        if (front[qn - 1] == -1)
+        {
+            cout << "Queue UnderFlow " << endl;
+            return -1;
+        }
+
+        // find index to pop
+        int index = front[qn - 1];
+
+        // front ko aage badhao
+        front[qn - 1] = next[index];
+
+        // freeSlots ko manage karo
+        next[index] = freeSpot;
+        freeSpot = index;
+        return arr[index];
+    }
 };
 
-int main() {
+int main()
+{
 
     kQueue q(10, 3);
     q.enqueue(10, 1);
-    q.enqueue(15,1);
+    q.enqueue(15, 1);
     q.enqueue(20, 2);
-    q.enqueue(25,1);
+    q.enqueue(25, 1);
 
     cout << q.dequeue(1) << endl;
     cout << q.dequeue(2) << endl;
@@ -438,3 +445,76 @@ int main() {
 }
 
 //=====================================================================================
+
+//Sum of max and mini element of all subarrays of size k
+//======================================================
+
+#include<iostream>
+#include<queue>
+using namespace std;
+
+int solve(int *arr, int n, int k) {
+
+    deque<int> maxi(k);
+    deque<int> mini(k);
+
+    //Addition of first k size window
+
+    for(int i=0; i<k; i++) {
+
+        while(!maxi.empty() && arr[maxi.back()] <= arr[i])
+            maxi.pop_back();
+
+        while(!mini.empty() && arr[mini.back()] >= arr[i])
+            mini.pop_back();
+
+        maxi.push_back(i);
+        mini.push_back(i);
+    }
+    int ans = 0;
+
+    ans += arr[maxi.front()] + arr[mini.front()];
+
+    //remaining windows ko process karlo
+    for(int i=k; i<n; i++) {
+
+        
+
+        //next window
+
+        //removal
+        while(!maxi.empty() && i - maxi.front() >=k) {
+            maxi.pop_front();
+        }
+
+        while(!mini.empty() && i - mini.front() >=k) {
+            mini.pop_front();
+        }
+
+        //addition
+
+        while(!maxi.empty() && arr[maxi.back()] <= arr[i])
+            maxi.pop_back();
+
+        while(!mini.empty() && arr[mini.back()] >= arr[i])
+            mini.pop_back();
+
+        maxi.push_back(i);
+        mini.push_back(i);    
+
+        ans += arr[maxi.front()] + arr[mini.front()];
+    }
+    return ans;
+}
+
+int main() {
+
+
+    int arr[7] = {2, 5, -1, 7, -3, -1, -2};
+    int k = 4;
+    cout << solve(arr, 7, k) << endl;
+
+
+    return 0;
+}
+//===================================================================================
