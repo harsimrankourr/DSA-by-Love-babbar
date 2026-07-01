@@ -1837,7 +1837,7 @@ vector<int> leftView(Node *root)
 */
 //====================================================================================
 
-//Right view of binary tree
+// Right view of binary tree
 //=========================
 
 #include <bits/stdc++.h>
@@ -1847,13 +1847,13 @@ using namespace std;
 struct Node
 {
     int data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
 };
 // Utility function to create a new Tree Node
-Node* newNode(int val)
+Node *newNode(int val)
 {
-    Node* temp = new Node;
+    Node *temp = new Node;
     temp->data = val;
     temp->left = NULL;
     temp->right = NULL;
@@ -1861,16 +1861,15 @@ Node* newNode(int val)
     return temp;
 }
 
-
- // } Driver Code Ends
+// } Driver Code Ends
 /* A binary tree node has data, pointer to left child
-   and a pointer to right child 
+   and a pointer to right child
 struct Node
 {
     int data;
     struct Node* left;
     struct Node* right;
-    
+
     Node(int x){
         data = x;
         left = right = NULL;
@@ -1880,21 +1879,21 @@ struct Node
 // Should return  right view of tree
 class Solution
 {
-    public:
-    //Function to return list containing elements of right view of binary tree.
-    void solve(Node* root, vector<int> &ans, int level) {
-    //base case
-    if(root == NULL)
-        return ;
-       
-    //we entered into a new level    
-    if(level == ans.size())
-        ans.push_back(root->data);
-        
-    solve(root->right, ans, level+1);    
-    solve(root->left, ans, level+1);
-    
-}
+public:
+    // Function to return list containing elements of right view of binary tree.
+    void solve(Node *root, vector<int> &ans, int level)
+    {
+        // base case
+        if (root == NULL)
+            return;
+
+        // we entered into a new level
+        if (level == ans.size())
+            ans.push_back(root->data);
+
+        solve(root->right, ans, level + 1);
+        solve(root->left, ans, level + 1);
+    }
     vector<int> rightView(Node *root)
     {
         vector<int> ans;
@@ -1903,15 +1902,13 @@ class Solution
     }
 };
 
-
-
 // { Driver Code Starts.
 
 // Function to Build Tree
-Node* buildTree(string str)
+Node *buildTree(string str)
 {
     // Corner Case
-    if(str.length() == 0 || str[0] == 'N')
+    if (str.length() == 0 || str[0] == 'N')
         return NULL;
 
     // Creating vector of strings from input
@@ -1919,29 +1916,31 @@ Node* buildTree(string str)
     vector<string> ip;
 
     istringstream iss(str);
-    for(string str; iss >> str; )
+    for (string str; iss >> str;)
         ip.push_back(str);
 
     // Create the root of the tree
-    Node* root = newNode(stoi(ip[0]));
+    Node *root = newNode(stoi(ip[0]));
 
     // Push the root to the queue
-    queue<Node*> queue;
+    queue<Node *> queue;
     queue.push(root);
 
     // Starting from the second element
     int i = 1;
-    while(!queue.empty() && i < ip.size()) {
+    while (!queue.empty() && i < ip.size())
+    {
 
         // Get and remove the front of the queue
-        Node* currNode = queue.front();
+        Node *currNode = queue.front();
         queue.pop();
 
         // Get the current node's value from the string
         string currVal = ip[i];
 
         // If the left child is not null
-        if(currVal != "N") {
+        if (currVal != "N")
+        {
 
             // Create the left child for the current node
             currNode->left = newNode(stoi(currVal));
@@ -1952,12 +1951,13 @@ Node* buildTree(string str)
 
         // For the right child
         i++;
-        if(i >= ip.size())
+        if (i >= ip.size())
             break;
         currVal = ip[i];
 
         // If the right child is not null
-        if(currVal != "N") {
+        if (currVal != "N")
+        {
 
             // Create the right child for the current node
             currNode->right = newNode(stoi(currVal));
@@ -1971,28 +1971,29 @@ Node* buildTree(string str)
     return root;
 }
 
-
-int main() {
+int main()
+{
     int t;
-    string  tc;
-    getline(cin,tc);
-    t=stoi(tc);
-    while(t--)
+    string tc;
+    getline(cin, tc);
+    t = stoi(tc);
+    while (t--)
     {
         string s;
-        getline(cin,s);
-        Node* root = buildTree(s);
+        getline(cin, s);
+        Node *root = buildTree(s);
 
         Solution ob;
         vector<int> vec = ob.rightView(root);
-        for(int x : vec){
-            cout<<x<<" ";
+        for (int x : vec)
+        {
+            cout << x << " ";
         }
         cout << endl;
     }
     return 0;
 }
 
-  // } Driver Code Ends
+// } Driver Code Ends
 
-  //============================================================================================
+//============================================================================================
