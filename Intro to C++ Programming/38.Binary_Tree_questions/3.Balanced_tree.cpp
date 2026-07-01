@@ -1,5 +1,3 @@
-
-
 // Check for balanced tree
 //========================
 
