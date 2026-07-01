@@ -2,7 +2,6 @@
 // Boundary traversal
 //==================
 
-/*
 #include <bits/stdc++.h>
 using namespace std;
 #define MAX_HEIGHT 100000
