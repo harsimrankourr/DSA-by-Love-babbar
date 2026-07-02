@@ -1,4 +1,4 @@
-//Construct tree from inorder and postorder
+// Construct tree from inorder and postorder
 //=========================================
 
 /*
@@ -12,12 +12,12 @@ class solution {
         }
     }
 
-    
+
     Node* solve(int in[], int post[], int &index, int inorderStart, int inorderEnd, int n, map<int, int> &nodetoIndex){
 
         //base case
         if(index <0 || inorderStart > inorderEnd){
-            return NULL; 
+            return NULL;
         }
 
         //create a root node for element
@@ -38,9 +38,10 @@ class solution {
         int postOrderIndex = n-1;
         map<int, int> nodeToIndex;
 
-        //create nodes to index mapping 
+        //create nodes to index mapping
         createMapping(in, nodeToIndex, n);
 
+    
         Node* ans = solve(in, post, postOrderIndex, 0, n-1, n);
         return ans;
     }
