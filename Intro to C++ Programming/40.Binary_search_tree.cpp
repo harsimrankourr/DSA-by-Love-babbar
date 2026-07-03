@@ -1,21 +1,21 @@
-#include<iostream>
-#include<queue>
+#include <iostream>
+#include <queue>
 using namespace std;
 
-class Node{
+class Node
+{
 
-    public:
+public:
     int data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
 
-    Node(int d){
-        this -> data = d;
-        this -> left = NULL;
-        this -> right = NULL;
-
+    Node(int d)
+    {
+        this->data = d;
+        this->left = NULL;
+        this->right = NULL;
     }
-
 };
 
 void levelOrderTraversal(Node *root)
@@ -55,45 +55,100 @@ void levelOrderTraversal(Node *root)
     }
 }
 
-Node* insertIntoBST(Node* root, int d){
+void inorder(Node *root)
+{
+    // base case
+    if (root == NULL)
+    {
+        return;
+    }
 
-    //base case
-    if(root == NULL){
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+
+void preorder(Node *root)
+{
+    // base case
+    if (root == NULL)
+    {
+        return;
+    }
+
+    cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
+void postorder(Node *root)
+{
+    // base case
+    if (root == NULL)
+    {
+        return;
+    }
+
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " ";
+}
+
+Node *insertIntoBST(Node *root, int d)
+{
+
+    // base case
+    if (root == NULL)
+    {
         root = new Node(d);
         return root;
     }
 
-    if(d > root -> data){
-        //insert in right part
-        root -> right = insertIntoBST(root -> right, d);
+    if (d > root->data)
+    {
+        // insert in right part
+        root->right = insertIntoBST(root->right, d);
     }
-    else{
-        //insert in left part
-        root -> left = insertIntoBST( root -> left, d);
+    else
+    {
+        // insert in left part
+        root->left = insertIntoBST(root->left, d);
     }
     return root;
 }
 
-void takeInput(Node* &root){
+void takeInput(Node *&root)
+{
 
     int data;
     cin >> data;
 
-    while(data != -1){
+    while (data != -1)
+    {
         root = insertIntoBST(root, data);
         cin >> data;
     }
 }
 
-int main(){
+int main()
+{
 
-    Node* root = NULL;
+    Node *root = NULL;
 
     cout << "Enter data to create a BST " << endl;
     takeInput(root);
 
     cout << "Printing the BST " << endl;
     levelOrderTraversal(root);
+
+    cout << "printing Inorder " << endl;
+    inorder(root);
+
+    cout << "printing Preorder " << endl;
+    preorder(root);
+
+    cout << "printing Postorder " << endl;
+    postorder(root);
 
     return 0;
 }
