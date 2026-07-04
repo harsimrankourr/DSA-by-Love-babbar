@@ -50,7 +50,7 @@ return head;
 
 //=====================================================================
 
-//ot it can be
+//or it can be
 
 Node* reverse1(Node* head){
 
