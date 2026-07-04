@@ -1,0 +1,19 @@
+/*
+
+TreeNode<int> *LCAinaBST(TreeNode<int> *root, TreeNode<int> *P, TreeNode<int> *Q)
+{
+
+    // base case
+    if (root == Null)
+        return Null;
+
+    if (root->data < P->data && root->data < Q->data)
+        return LCAinaBST(root->right, P, Q);
+
+    if (root->data > P->data && root->data > Q->data)
+        return LCAinaBST(root->left, P, Q);
+
+    return root;
+}
+
+*/
