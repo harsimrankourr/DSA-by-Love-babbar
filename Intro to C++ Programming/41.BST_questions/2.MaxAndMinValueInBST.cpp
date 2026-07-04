@@ -1,6 +1,3 @@
-//Binary search tree
-
-//Inorder of BST is sorted
 
 #include <iostream>
 #include <queue>
@@ -121,6 +118,28 @@ Node *insertIntoBST(Node *root, int d)
     return root;
 }
 
+Node *minVal(Node *root)
+{
+    Node *temp = root;
+
+    while (temp->left != NULL)
+    {
+        temp = temp->left;
+    }
+    return temp;
+}
+
+Node *maxVal(Node *root)
+{
+    Node *temp = root;
+
+    while (temp->right != NULL)
+    {
+        temp = temp->right;
+    }
+    return temp;
+}
+
 void takeInput(Node *&root)
 {
 
@@ -153,6 +172,9 @@ int main()
 
     cout << "printing Postorder " << endl;
     postorder(root);
+
+    cout  << "Min value is " << minVal(root) -> data << endl;
+    cout  << "Max value is " << maxVal(root) -> data << endl;
 
     return 0;
 }

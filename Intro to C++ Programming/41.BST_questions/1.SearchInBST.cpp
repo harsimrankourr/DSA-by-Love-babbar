@@ -33,6 +33,7 @@ bool searchInBST(BinaryTreeNode<int> *root, int x)
 
 // if we done this problem in iterative way than recursive way then space complexity will become constant
 
+/*
 bool searchInBST(BinaryTreeNode<int> *root, int x)
 {
 
@@ -57,3 +58,5 @@ bool searchInBST(BinaryTreeNode<int> *root, int x)
     }
     return false;
 };
+
+*/ 
