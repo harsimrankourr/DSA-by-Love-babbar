@@ -16,7 +16,7 @@ bool twoSumInBST(BinaryTreeNode<int> *root, int target)
     vector<int> inorderVal;
 
     //Store inorder -> sorted values
-    inorder(root, inorderrVal);
+    inorder(root, inorderVal);
 
     //use 2 Pointer approach to check if pair exists
     int i = 0, j = inorderVal.size() - 1;
