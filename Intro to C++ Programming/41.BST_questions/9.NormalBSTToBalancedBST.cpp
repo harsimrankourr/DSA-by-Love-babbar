@@ -1,3 +1,6 @@
+//A balanced BST is defined as a BST, in which the height of two subtrees of every
+// nodes differs no more than1.
+
 /*
 
 void inorder(TreeNode<int> *root, vector<int> &in)
@@ -11,7 +14,7 @@ void inorder(TreeNode<int> *root, vector<int> &in)
     inorder(root->right, in);
 }
 
-TreeNode<int> *inorderToBST(int s, int e, vector<int> in)
+TreeNode<int> *inorderToBST(int s, int e, vector<int> &in)
 {
 
     // base case
