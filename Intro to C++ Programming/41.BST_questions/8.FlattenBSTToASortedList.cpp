@@ -20,6 +20,7 @@ TreeNode<int> *flatten(TreeNode<int> *root)
     inorder(root, inorderVal);
     int n = inorderVal.size();
 
+    //creating nodes for the values stored in the array and we are making sure all the nodes must be connected
     TreeNode<int> *newwRoot = new TreeNode<int>(inorderVal[0]);
 
     TreeNode<int> *curr = newRoot;
