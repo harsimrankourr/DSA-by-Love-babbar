@@ -16,7 +16,7 @@ public:
         }
 
         // step 2
-        for (int i = k; i < r; i++)
+        for (int i = k; i <= r; i++)
         {
             if (arr[i] < pq.top())
             {
