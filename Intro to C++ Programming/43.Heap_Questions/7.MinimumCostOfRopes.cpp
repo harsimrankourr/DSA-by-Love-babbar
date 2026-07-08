@@ -1,3 +1,9 @@
+
+//N-ropes of different length
+// Connect these ropes into 1
+// Cost of connecting two ropes is the sum of their length
+// Task is to connect the ropes with minimum cost
+
 /*
 
 class solution

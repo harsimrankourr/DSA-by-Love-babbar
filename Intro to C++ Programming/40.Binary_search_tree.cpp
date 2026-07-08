@@ -239,7 +239,7 @@ int main()
     cout << "printing Postorder " << endl;
     postorder(root);
 
-    //DELETION
+    // DELETION
     root = deleteFromBST(root, 30);
 
     cout << "Enter data to create a BST " << endl;
