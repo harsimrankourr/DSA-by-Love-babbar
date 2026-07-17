@@ -20,4 +20,8 @@ int main(){
 
     //3
     m["mera"] = 1;
+
+    //Search
+    cout << m["mera"] << endl;
+    cout << m.at["simran"] << endl;
 }
