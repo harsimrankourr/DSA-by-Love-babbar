@@ -10,6 +10,14 @@ int main(){
 
     //Insertion
 
+    //1
     pair <string, int> p = make_pair("simran" , 3);
     m.insert(p);
+
+    //2
+    pair<string, int> pair2("Harsimran", 2);
+    m.insert(pair2);
+
+    //3
+    m["mera"] = 1;
 }
