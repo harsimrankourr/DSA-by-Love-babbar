@@ -1,27 +1,33 @@
-#include<iostream>
-#include<map>
-#include<unordered_map>
+#include <iostream>
+#include <map>
+#include <unordered_map>
 using namespace std;
 
-int main(){
+int main()
+{
 
-    //creation of a map
+    // creation of a map
     unordered_map<string, int> m;
 
-    //Insertion
+    // Insertion
 
-    //1
-    pair <string, int> p = make_pair("simran" , 3);
+    // 1
+    pair<string, int> p = make_pair("simran", 3);
     m.insert(p);
 
-    //2
+    // 2
     pair<string, int> pair2("Harsimran", 2);
     m.insert(pair2);
 
-    //3
+    // 3
     m["mera"] = 1;
 
-    //Search
+    // Search
     cout << m["mera"] << endl;
     cout << m.at("simran") << endl;
+
+    cout << m.at("unknownKey") << endl;
+    cout << m["unknownKey"] << endl;
+
+    return 0;
 }
