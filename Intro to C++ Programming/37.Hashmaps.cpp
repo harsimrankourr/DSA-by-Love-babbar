@@ -23,5 +23,5 @@ int main(){
 
     //Search
     cout << m["mera"] << endl;
-    cout << m.at["simran"] << endl;
+    cout << m.at("simran") << endl;
 }
