@@ -22,12 +22,23 @@ int main()
     // 3
     m["mera"] = 1;
 
+    //Updation will occur 
+    m["mera"] = 2;
+
     // Search
     cout << m["mera"] << endl;
     cout << m.at("simran") << endl;
 
     cout << m.at("unknownKey") << endl;
+
+    //created an entry 0 for this unknown key
     cout << m["unknownKey"] << endl;
+
+    //size 
+    cout << m.size() << endl;
+
+    // to check presence 
+    cout << m.count ("bro") << endl; 
 
     return 0;
 }
