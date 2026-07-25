@@ -7,7 +7,7 @@ int main()
 {
 
     // creation of a map
-    unordered_map<string, int> m;
+    map<string, int> m;
 
     // Insertion
 
@@ -22,7 +22,7 @@ int main()
     // 3
     m["mera"] = 1;
 
-    //Updation will occur 
+    // Updation will occur
     m["mera"] = 2;
 
     // Search
@@ -31,18 +31,35 @@ int main()
 
     cout << m.at("unknownKey") << endl;
 
-    //created an entry 0 for this unknown key
+    // created an entry 0 for this unknown key
     cout << m["unknownKey"] << endl;
 
-    //size 
+    // size
     cout << m.size() << endl;
 
-    // to check presence 
-    cout << m.count ("bro") << endl; 
+    // to check presence
+    cout << m.count("bro") << endl;
 
-    //erase
+    // erase
     m.erase("simran");
     cout << m.size() << endl;
+
+    // access any element
+
+    // using iterators
+    map<string, int>::iterator it = m.begin();
+
+    while (it != m.end())
+    {
+        cout << it->first << " " << it->second << endl;
+        it++;
+    }
+
+    // or
+    for (auto i : m)
+    {
+        cout << i.first << " " << i.second << endl;
+    }
 
     return 0;
 }
