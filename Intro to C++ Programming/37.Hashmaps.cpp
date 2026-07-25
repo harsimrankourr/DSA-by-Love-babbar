@@ -40,5 +40,9 @@ int main()
     // to check presence 
     cout << m.count ("bro") << endl; 
 
+    //erase
+    m.erase("simran");
+    cout << m.size() << endl;
+
     return 0;
 }
