@@ -1,0 +1,29 @@
+
+/*
+// ingeneral solution of maximum frequent number
+
+int maximumFrequency(vector<int> &arr, int n)
+{
+
+    unordered_map<int, int> count;
+
+    for (int i = 0; i < arr.size(); i++)
+    {
+        count[arr[i]++];
+    }
+
+    int maxi = INT_MIN;
+    int ans = -1;
+
+    for (auto i : m)
+    {
+        if (i.second > maxi)
+        {
+            maxi = i.second;
+            ans = i.first;
+        }
+    }
+    return ans;
+}
+    */
+   
