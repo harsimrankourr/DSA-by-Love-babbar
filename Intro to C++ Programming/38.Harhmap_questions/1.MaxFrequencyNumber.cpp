@@ -15,7 +15,7 @@ int maximumFrequency(vector<int> &arr, int n)
     int maxi = INT_MIN;
     int ans = -1;
 
-    for (auto i : m)
+    for (auto i : count)
     {
         if (i.second > maxi)
         {
@@ -26,4 +26,3 @@ int maximumFrequency(vector<int> &arr, int n)
     return ans;
 }
     */
-   
