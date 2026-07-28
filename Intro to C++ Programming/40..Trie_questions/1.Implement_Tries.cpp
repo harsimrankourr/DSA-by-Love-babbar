@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+/*
 
 class TrieNode
 {
@@ -21,9 +20,10 @@ public:
 
 class Trie
 {
-public:
     TrieNode *root;
 
+public:
+    // initializing data structure here
     Trie()
     {
         root = new TrieNode('\0');
@@ -57,7 +57,8 @@ public:
         insertUtil(child, word.substr(1));
     }
 
-    void insertWord(string word)
+    // insert a word into a Trie
+    void insert(string word)
     {
         insertUtil(root, word);
     }
@@ -87,19 +88,43 @@ public:
         return searchUtil(child, word.substr(1));
     }
 
-    bool searchWord(string word)
+    // Returns if the word is in the tries.
+
+    bool search(string word)
     {
         return searchUtil(root, word);
     }
+
+    bool prefixUtil(TrieNode *root, string word)
+    {
+        // base case
+        if (word.length() == 0)
+        {
+            return true;
+        }
+        int index = word[0] - 'a';
+        TrieNode *child;
+
+        // present
+        if (root->children[index] != NULL)
+        {
+            child = root->children[index];
+        }
+        else
+        {
+            // absent
+            return false;
+        }
+
+        /// recursion
+        return prefixUtil(child, word.substr(1));
+    }
+
+    // Return if there is any word in thr trie that starts with the given prefix
+    bool startsWith(string prefix)
+    {
+        return prefixUtil(root, prefix);
+    }
 };
 
-int main()
-{
-
-    Trie *t = new Trie();
-
-    t->insertWord("abcd");
-    cout << "present or not " << t->searchWord("abcd") << endl;
-
-    return 0;
-}
+*/
