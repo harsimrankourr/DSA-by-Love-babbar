@@ -39,7 +39,7 @@ public:
         }
 
         // assuming that word will be in CAPS
-        int index = word[0] - 'A';
+        int index = word[0] - 'a';
         TrieNode *child;
 
         // present
@@ -70,7 +70,7 @@ public:
         {
             return root->isTerminal;
         }
-        int index = word[0] = 'A';
+        int index = word[0] - 'a';
         TrieNode *child;
 
         // present
@@ -88,7 +88,7 @@ public:
         return searchUtil(child, word.substr(1));
     }
 
-    bool search(string word)
+    bool searchWord(string word)
     {
         return searchUtil(root, word);
     }
@@ -100,6 +100,7 @@ int main()
     Trie *t = new Trie();
 
     t->insertWord("abcd");
+    cout << "present or not " << t->searchWord("abcd") << endl;
 
     return 0;
 }
