@@ -1,3 +1,8 @@
+/*
+A specialized tree based data structure used to store and retrieve a dynamic set of keys, 
+typically strings, over a finite alphabets.
+*/
+
 #include <iostream>
 using namespace std;
 
