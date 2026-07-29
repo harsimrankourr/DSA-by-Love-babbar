@@ -28,7 +28,7 @@ string longestCommonPrefix(vector<string> &arr, int n)
 }
     */
 
-    
+    /*
 class TrieNode
 {
 public:
@@ -133,3 +133,5 @@ string longestCommonPrefix(vector<string> &arr, int n)
     t->lcp(first, ans);
     return ans;
 }
+
+*/
