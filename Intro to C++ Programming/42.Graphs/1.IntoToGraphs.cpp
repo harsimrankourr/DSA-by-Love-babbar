@@ -4,6 +4,10 @@ In simple words Graph is a type of data structure which is basically the combina
 In the other words it is a non linear data structure consisting of a finite set of vertices (also called nodes) and
 a set of edges that connect these nodes to represent relationship.
 
+Why we use graphs?
+it is used because they are the only non-linear data structure capable of modeling arbitrary, complex and many-to-many
+relationships between data points without structural restrictions.
+
     Nodes- entities to store data
     edges - connecting nodes
 
@@ -34,6 +38,9 @@ Acyclic graps -If there will be weight present then
 Graphs
         - Adjacency matrix
         - Adjacency list
+
+        - Adjacency matrix and adjacency list are the two main ways to store a graph(a network of nodes and connnections)
+            in a computer's memory
 */
 
 // Adjacency list implimentation
