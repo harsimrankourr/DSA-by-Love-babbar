@@ -29,7 +29,7 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)
     for (int i = 0; i < v; i++)
     {
         if (indegree[i] == 0)
-            q.push(i;)
+            q.push(i);
     }
 
     // do BFS's
