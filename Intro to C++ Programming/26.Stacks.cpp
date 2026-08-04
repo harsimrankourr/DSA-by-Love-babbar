@@ -134,85 +134,13 @@ int main()
     return 0;
 }
 
-
-// valid braces or braces reversal
-//==============================
-
-#include <stack>
-int findMinimumCost(string str)
-{
-
-    // odd condition
-    if (str.length() % 2 == 1)
-    {
-        return -1;
-    }
-
-    stack<char> s;
-    for (int i = 0; i < str.length(); i++)
-    {
-        char ch = str[i];
-
-        if (ch == '{')
-            s.push(ch);
-        else
-        {
-            // ch is closed brace
-            if (!s.empty() && s.top() == '{')
-            {
-                s.pop();
-            }
-            else
-            {
-                s.push(ch);
-            }
-        }
-    }
-
-    // stack contains invalid expression
-    int a = 0, b = 0;
-    while (!s.empty())
-    {
-        if (s.top() == '{')
-        {
-            b++;
-        }
-        else
-        {
-            a++;
-        }
-        s.pop();
-    }
-
-    int ans = (a + 1) / 2 + (b + 1) / 2;
-    return ans;
-}
-
 //==============================================================================
 
 // find next smaller element
 //=========================
 
 /*
-#include<stack>
-vector<int> nextSmallerElement(vector<int> &arr, int n)
-{
-    stack<int> s;
-    s.push(-1);
-    vector<int> ans(n);
 
-    for(int i=n-1; i>=0 ; i--) {
-        int curr = arr[i];
-        while(s.top() >= curr)
-        {
-            s.pop();
-        }
-        //ans is stack ka top
-        ans[i] = s.top();
-        s.push(curr);
-    }
-    return ans;
-}
 */
 
 //======================================================================
