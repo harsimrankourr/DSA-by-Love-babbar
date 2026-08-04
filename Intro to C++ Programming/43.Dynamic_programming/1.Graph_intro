@@ -1,0 +1,9 @@
+Dp is a computer programming method that solves complex problems by breaking them down into smaller overlapping subproblems,
+solving each subproblem exactly once, and storing their solution to avoid redundant calculations
+
+While solving the questions through Dp
+2 approaches
+    - Top downn approach -> Recursion + Memoization.
+    - Bottom up approach -> Tabulation
+
+    Then out of them we will find the space optimization.
