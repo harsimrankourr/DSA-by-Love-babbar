@@ -1,4 +1,4 @@
-
+/*
 
 int solveRec(vector<int> &num, int x)
 {
@@ -85,6 +85,7 @@ int minimumElements(vector<int> &num, int x)
     // else
     //     return ans;
 
-    // For TAbulation
+    // For Tabulation
     return solveTab(num, x);
 }
+    */
