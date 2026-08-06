@@ -28,8 +28,8 @@ int solveMem(vector<int> &nums, int n, vector<int> &dp)
     if (dp[n] != -1)
         return dp[n];
 
-    int incl = solve(nums, n - 2) + nums[n];
-    int excl = solve(nums, n - 1) + 0;
+    int incl = solveMen(nums, n - 2, dp) + nums[n];
+    int excl = solveMem(nums, n - 1, dp) + 0;
 
     dp[n] = max(incl, excl);
 
