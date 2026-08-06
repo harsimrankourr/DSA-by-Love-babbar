@@ -57,7 +57,7 @@ int solveSpace(vector<int> &nums, int n, vector<int> &dp)
     int n = nums.size();
 
     int prev2 = 0;
-    itn prev1 = nums[0];
+    int prev1 = nums[0];
 
     for (int i = 1; i < n; i++)
     {
