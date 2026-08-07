@@ -1,4 +1,3 @@
-
 // binary search with recursion
 
 // first condition of binary search is array should be sorted
