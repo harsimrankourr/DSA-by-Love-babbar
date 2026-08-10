@@ -1,0 +1,55 @@
+/*
+Here are given with
+    N- the number of posts
+    K- number of colors
+
+    we have to paint the posts
+    condition - not more than 2 adjacent posts have the same color
+
+    solve(n) - no. of ways to paint n posts with k colors such that not more than 2 consecutive posts have the same color
+*/
+
+#define MOD 1000000007
+
+int add(int a, int b)
+{
+    return (a % MOD + b % MOD) % MOD;
+}
+
+int mul(int a, int b)
+{
+    return ((a % MOD)* 1LL * (b % MOD)) % MOD;
+}
+
+int solve(int n, int k)
+{
+    // base case
+    if (n == 1)
+        return k;
+    if (n == 2)
+        return add(k, mul(k, k - 1));
+
+    int ans = add(mul(Solve(n - 2, k), k - 1), mul(solve(n - 1, k), k - 1));
+    return ans;
+}
+
+int solveMemo(int n, int k, vector<int> &dp)
+{
+    // base case
+    if (n == 1)
+        return k;
+    if (n == 2)
+        return add(k, mul(k, k - 1));
+
+        if(dp[n] != -1)
+        return dp[n];
+
+    dp[n]= add(mul(SolveMemo(n - 2, k, dp), k - 1), mul(solveMemo(n - 1, k, dp), k - 1));
+    return dp[n];
+}
+
+int numberOfWays(int n, int k)
+{
+    vector<int> dp(n+1, -1);
+    return solveMemo(n,k,dp);
+}
