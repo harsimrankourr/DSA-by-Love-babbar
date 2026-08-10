@@ -1,4 +1,7 @@
 /*
+Ninja and the fence 
+//=================
+
 Here are given with
     N- the number of posts
     K- number of colors
