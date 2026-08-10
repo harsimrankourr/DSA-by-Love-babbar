@@ -11,6 +11,7 @@ We just have to make sure in our ans if there is !st element is present last sho
 if there element is present 1st shouln't be present.
 */
 
+
 // long long int solve(vector<int> &nums, int n, vector<int> &dp)
 // {
 //     long long int n = nums.size();
@@ -23,7 +24,7 @@ if there element is present 1st shouln't be present.
 //         long long int incl = prev2 + nums[i];
 //         long long int excl = prev1 + 0;
 //         long long int ans = max(incl, excl);
-//         prev2 = prev2;
+//         prev2 = prev1;
 //         prev1 = ans;
 //     }
 //     return prev1;
@@ -44,5 +45,6 @@ if there element is present 1st shouln't be present.
 //         if (i != 0)
 //             second.push_back(valueInHouse[i]);
 //     }
-//     return max(solve(first), solve(second));
+//     return max(solve(first), solve(second), dp);
 // }
+
