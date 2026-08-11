@@ -43,10 +43,31 @@ int solveMemo(vector<int> &num, int tar, vector<int> &dp)
     return dp[tar];
 }
 
+int solveTab(vector<int> &num, int tar)
+{
+    vector<int> dp(tar + 1, 0);
+    dp[0] = 1;
+
+    // traversing from target 1 to target n
+    for (int i = 1; i <= tar; i++)
+    {
+
+        // traversing on numvector
+        for (int j = 0; j < num.size(); j++)
+        {
+            if( i - num[j] >= 0)
+            dp[i] += dp[i - num[j]];
+        }
+    }
+    return dp[tar];
+}
+
 int findWays(vector<int> &nums, int tar)
 {
-    // return solve(num, tar);
+    // // return solve(num, tar);
 
-    vector<int> dp(tar + 1, -1);
-    return solveMemo(num, tar, dp);
+    // vector<int> dp(tar + 1, -1);
+    // return solveMemo(num, tar, dp);
+
+    return solveTab(num, tar);
 }
