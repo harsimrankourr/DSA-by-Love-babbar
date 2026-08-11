@@ -7,7 +7,7 @@ And have to return the minimum sum of the vertices.
 class solution
 {
 public:
-    int solve(vector<int> &, int i, int j)
+    int solve(vector<int> &v, int i, int j)
     {
         // base case
         if (i + 1 == j)
@@ -23,7 +23,7 @@ public:
         return ans;
     }
 
-    int solveMemo(vector<int> &, int i, int j, vector<vector<int>> &dp)
+    int solveMemo(vector<int> &v, int i, int j, vector<vector<int>> &dp)
     {
         // base case
         if (i + 1 == j)
@@ -31,8 +31,8 @@ public:
             return 0;
         }
 
-        if(dp[i][j] != -1)
-        return dp[i][j];
+        if (dp[i][j] != -1)
+            return dp[i][j];
 
         int ans = INT_MAX;
         for (int k = i + 1; k < j; k++)
@@ -43,12 +43,34 @@ public:
         return dp[i][j];
     }
 
+    int solveTab(vector<int> &v)
+    {
+        int n = v.size();
+        vector<vector<int>> dp(n, vector<int>(n, 0));
+
+        foe(int i = n - 1; i >= 0; i--)
+        {
+            for (int j = i + 2; j < n; j++)
+            {
+                int ans = INT_MAX;
+                for (int k = i + 1; k < j; k++)
+                {
+                    ans = min(ans, v[i] * v[j] * v[k] + sdp[i][k] + dp[k][j]);
+                }
+                dp[i][j] = ans;
+            }
+        }
+        return dp[0][n - 1];
+    }
+
     int minScoreTriangulation(vector<int> &values)
     {
-         int n = values.size();
-        // return solve(values, 0, n - 1);
+        int n = values.size();
+        // // return solve(values, 0, n - 1);
 
-        vector<vector<int>> dp(n, vector<int> (n, -1));
-        return solveMemo(values,  0, n-1, dp);
+        // vector<vector<int>> dp(n, vector<int>(n, -1));
+        // return solveMemo(values, 0, n - 1, dp);
+
+        return solveTab(values);
     }
 };
