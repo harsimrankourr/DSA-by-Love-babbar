@@ -45,6 +45,7 @@ int solveMemo(int n, vector<int> &days, vector<int> &cost, int index, vector<int
         return 0;
     }
 
+    // Step 3
     if (dp[index] != -1)
         return dp[index];
 
@@ -64,14 +65,48 @@ int solveMemo(int n, vector<int> &days, vector<int> &cost, int index, vector<int
 
     int option3 = cost[2] + solveMemo(n, days, cost, i, dp);
 
+    // Step 2
     dp[index] = min(option1, min(option2, option3));
     return dp[index];
 }
 
+int solveTab(int n, vector<int> &days, vector<int> &cost)
+{
+    vector<int> dp(n + 1, INT_MAX);
+    dp[n] = 0;
+
+    for (int k = n - 1; k >= 0; k--)
+    {
+
+        // 1 day pass
+        int option1 = cost[0] + dp[k + 1];
+
+        int i;
+        // 7 days pass
+        for (i = k; i < n && days[i] < days[k] + 7; i++)
+            ;
+
+        int option2 = cost[1] + dp[i];
+
+        // 30 days pass
+        for (i = k; i < n && days[i] < days[k] + 30; i++)
+            ;
+
+        int option3 = cost[2] + dp[i];
+
+        // Step 2
+        dp[k] = min(option1, min(option2, option3));
+    }
+    return dp[0];
+}
+
 int minimumCOins(int n, vector<int> days, vector<int> cost)
 {
-    // return solve(n, days, cost, 0);
+    // // return solve(n, days, cost, 0);
 
-    vector<int> dp(n + 1, -1);
-    return solveMemo(n, days, cost, 0, dp);
+    // // Step 1
+    // vector<int> dp(n + 1, -1);
+    // return solveMemo(n, days, cost, 0, dp);
+
+    return solveTab(n, days, cost);
 }
