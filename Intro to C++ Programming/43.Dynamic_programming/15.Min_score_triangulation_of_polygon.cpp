@@ -4,6 +4,7 @@ We have to make diagonals in the polygon such that. All the obtained/ remainning
 And have to return the minimum sum of the vertices.
 */
 
+/*
 class solution
 {
 public:
@@ -74,3 +75,5 @@ public:
         return solveTab(values);
     }
 };
+
+*/
