@@ -1,0 +1,54 @@
+/*
+We are given with a polygon having weights on the vertices
+We have to make diagonals in the polygon such that. All the obtained/ remainning polygon must be triangles
+And have to return the minimum sum of the vertices.
+*/
+
+class solution
+{
+public:
+    int solve(vector<int> &, int i, int j)
+    {
+        // base case
+        if (i + 1 == j)
+        {
+            return 0;
+        }
+
+        int ans = INT_MAX;
+        for (int k = i + 1; k < j; k++)
+        {
+            ans = min(ans, v[i] * v[j] * v[k] + solve(v, i, k) + solve(v, k, j));
+        }
+        return ans;
+    }
+
+    int solveMemo(vector<int> &, int i, int j, vector<vector<int>> &dp)
+    {
+        // base case
+        if (i + 1 == j)
+        {
+            return 0;
+        }
+
+        if(dp[i][j] != -1)
+        return dp[i][j];
+
+        int ans = INT_MAX;
+        for (int k = i + 1; k < j; k++)
+        {
+            ans = min(ans, v[i] * v[j] * v[k] + solveMemo(v, i, k, dp) + solveMemo(v, k, j, dp));
+        }
+        dp[i][j] = ans;
+        return dp[i][j];
+    }
+
+    int minScoreTriangulation(vector<int> &values)
+    {
+         int n = values.size();
+        // return solve(values, 0, n - 1);
+
+        vector<vector<int>> dp(n, vector<int> (n, -1));
+        return solveMemo(values,  0, n-1, dp);
+    }
+};

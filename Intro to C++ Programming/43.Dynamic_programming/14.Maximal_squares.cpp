@@ -82,6 +82,8 @@ public:
         return dp[0][0];
     }
 
+
+    //SC -> O(m)
     int solveSo(vector<vector<int>> &mat, int &maxi)
     {
         int row = mat.size();
