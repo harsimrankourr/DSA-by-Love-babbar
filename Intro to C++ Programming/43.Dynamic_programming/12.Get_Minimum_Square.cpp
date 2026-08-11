@@ -4,6 +4,7 @@ we have to find how many perfect square numbers are required to make the given n
 We have to give the minimum no. of such perfect square elements.
 */
 
+/*
 class solution
 {
 public:
@@ -68,3 +69,4 @@ public:
         return solveTab(n);
     }
 };
+*/
