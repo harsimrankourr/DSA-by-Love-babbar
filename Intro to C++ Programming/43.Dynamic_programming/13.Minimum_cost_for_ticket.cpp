@@ -9,6 +9,7 @@ A 30 - days pass is sold for cost[2] coins.
 We have to return the minimum value of tickets.
 */
 
+/*
 // Not such a good solution using recursion
 int solve(int n, vector<int> &days, vector<int> &cost, int index)
 {
@@ -100,13 +101,46 @@ int solveTab(int n, vector<int> &days, vector<int> &cost)
     return dp[0];
 }
 
+// Taking queuue but still there is only O(1) space complexity
+// Coz we know that in monthly queue there will be only 30 entities
+// and in weekly queue there will only 7 entities
+//  so constant number of entities therefore, O(1) is used
+
+// The  days that are less than 7 and 30 pop them from the queue
+
 int minimumCOins(int n, vector<int> days, vector<int> cost)
 {
     // // return solve(n, days, cost, 0);
 
-    // // Step 1
-    // vector<int> dp(n + 1, -1);
-    // return solveMemo(n, days, cost, 0, dp);
+    // // // Step 1
+    // // vector<int> dp(n + 1, -1);
+    // // return solveMemo(n, days, cost, 0, dp);
 
-    return solveTab(n, days, cost);
+    // return solveTab(n, days, cost);
+
+    // Space optimal solution
+
+    int ans = 0;
+
+    queue<pair<int, int>> month;
+    queue<pair<int, int>> week;
+
+    for (int day : days)
+    {
+        // step 1 - remove expiredd days
+        while (!month.empty() && month.front().first + 30 <= day)
+            month.pop();
+
+        while (!week.empty() && week.front().first + 7 <= day)
+            week.pop();
+
+        // Step 2- add cost for current day
+        week.push(make_pair(day, ans + cost[1]));
+        month.push(make_pair(day, ans + cost[2]));
+
+        // Step 3- ans update
+        ans = min(ans + cost[0], min(week.front().second, month.front().second));
+    }
+    return ans;
 }
+    */
