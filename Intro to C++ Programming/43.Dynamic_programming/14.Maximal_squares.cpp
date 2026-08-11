@@ -4,6 +4,7 @@ size of the matrix is n*m
 we have to find thr maximum size square sub matrix with all 1's.
 */
 
+/*
 class solution
 {
 public:
@@ -74,26 +75,64 @@ public:
                 }
                 else
                 {
-                    return dp[i][j];
+                    dp[i][j] = 0;
                 }
             }
         }
         return dp[0][0];
     }
 
+    int solveSo(vector<vector<int>> &mat, int &maxi)
+    {
+        int row = mat.size();
+        int col = mat[0].size();
+
+        vector<vector<int>> dp(row + 1, vector<int>(col + 1, 0));
+        vector<int> curr(col + 1, 0);
+        vector<int> next(col + 1, 0);
+
+        for (int i = row - 1; i >= 0; i--)
+        {
+            for (int j = col - 1; j >= 0; j--)
+            {
+                int right = curr[j + 1];
+                int diagonal = next[j + 1];
+                int down = next[j + 1];
+
+                if (mat[i][j] = '1')
+                {
+                    curr[j] = 1 + min(right, min(diagonal, down));
+                    maxi = max(maxi, curr[j]);
+                }
+                else
+                {
+                    curr[j] = 0;
+                }
+            }
+            next = curr;
+        }
+        return next[0];
+    }
+
     int maxSquare(int n, int m, vector<vector<int>> mat)
     {
+        // // // int maxi = 0;
+        // // // solve(mat, 0, 0, maxi);
+        // // // return maxi;
+
         // // int maxi = 0;
-        // // solve(mat, 0, 0, maxi);
+        // // vector<vector<int>> dp(n, vector<int>(m, -1));
+        // // solveMemo(mat, 0, 0, maxi, dp);
         // // return maxi;
 
         // int maxi = 0;
-        // vector<vector<int>> dp(n, vector<int>(m, -1));
-        // solveMemo(mat, 0, 0, maxi, dp);
+        // salveTab(mat, maxi);
         // return maxi;
 
         int maxi = 0;
-        salveTab(mat, maxi);
+        solveSo(mat, maxi);
         return maxi;
     }
 };
+
+*/
