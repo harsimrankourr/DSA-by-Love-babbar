@@ -3,6 +3,7 @@ We are given with size of array N and a Target
 we have to make the combinations of the elements of array to get the sum or target
 */
 
+/*
 int solve(vector<int> &num, int tar)
 {
     // base case
@@ -71,3 +72,4 @@ int findWays(vector<int> &nums, int tar)
 
     return solveTab(num, tar);
 }
+*/
