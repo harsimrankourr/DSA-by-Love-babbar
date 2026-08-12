@@ -40,6 +40,24 @@ public:
         return dp[index][time] = max(include, exclude);
     }
 
+    int solveTab(vector<int> &satisfaction)
+    {
+        int n = satisfaction.size();
+        vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
+
+        for (int index = n - 1; index >= 0; index--)
+        {
+            for (int time = index; time >= 0; time--)
+            {
+
+                int include = satisfaction[index] * (time + 1) + dp[index + 1][time + 1];
+                int exclude = 0 + dp[index + 1][time];
+
+                dp[index][time] = max(include, exclude);
+            }
+        }
+    }
+
     int maxSatisfaction(vector<int> &satisfaction)
     {
         // sort the vector
@@ -47,7 +65,8 @@ public:
         // return solve(satisfaction, 0, 0);
 
         int n = satisfaction.size();
-        vector<vector<int>> dp(n + 1, vector<int>(n + 1, -1));
-        return solveMemo(satisfaction, 0, 0, dp);
+        // vector<vector<int>> dp(n + 1, vector<int>(n + 1, -1));
+        // return solveMemo(satisfaction, 0, 0, dp);
+        return solveTab(satisfaction);
     }
 };
