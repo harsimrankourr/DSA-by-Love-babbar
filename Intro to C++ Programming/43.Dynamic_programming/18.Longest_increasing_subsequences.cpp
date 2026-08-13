@@ -47,13 +47,39 @@ public:
         return dp[curr][prev] = max(take, notTake);
     }
 
+    int solveTab(int n, int a[])
+    {
+        vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
+
+        for (int curr = n - 1; curr >= 0; curr--)
+        {
+            for (int prev = curr - 1; prev >= -1; prev--)
+            {
+
+                // include
+                int take = 0;
+                if (prev == -1 || a[curr] > a[prev])
+                    take = 1 + dp[curr + 1][curr + 1];
+
+                // exclude
+                int notTake = 0 + dp[curr + 1][prev + 1];
+
+                dp[curr][prev + 1] = max(take, notTake);
+            }
+        }
+        // Returning 0 and -1 (but -1 isn't a valid index so add 1 in the -1 to make it valid index)
+        return dp[0][-1];
+    }
+
     // Function to find length of longest increasing subsequences
     int longestSubsequence(int n, int a[])
     {
         // return solve(n, a, 0, -1);
 
-        // n+1 elements form -1 to n
-        vector<vector<int>> dp(n, vector<int>(n + 1, -1));
-        return solveMemo(n, a, 0, -1, dp);
+        // // n+1 elements form -1 to n
+        // vector<vector<int>> dp(n, vector<int>(n + 1, -1));
+        // return solveMemo(n, a, 0, -1, dp);
+
+        return solveTab(n, a);
     }
 };
