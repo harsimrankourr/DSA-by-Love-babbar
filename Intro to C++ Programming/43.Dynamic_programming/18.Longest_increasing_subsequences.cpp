@@ -71,6 +71,53 @@ public:
         return dp[0][-1];
     }
 
+    int solveSo(int n, int a[])
+    {
+        vector<int> currRow(n + 1, 0);
+        vector<int> nextRow(n + 1, 0);
+
+        for (int curr = n - 1; curr >= 0; curr--)
+        {
+            for (int prev = curr - 1; prev >= -1; prev--)
+            {
+
+                // include
+                int take = 0;
+                if (prev == -1 || a[curr] > a[prev])
+                    take = 1 + nextRow[curr + 1];
+
+                // exclude
+                int notTake = 0 + nextRow[prev + 1];
+
+                currRow[prev + 1] = max(take, notTake);
+            }
+            nextRow = currRow;
+        }
+        return nextRow[0];
+    }
+
+    int solveOptimal(int n, int a[])
+    {
+        if (n == 0)
+            return 0;
+
+        vector<int> ans;
+        ans.push_back(a[0]);
+
+        for (int i = 1; i < n; i++)
+        {
+            if (a[i] > ans.back())
+                ans.push_back(a[i]);
+            else
+            {
+                // Find index of just bada element in ans
+                int index = lower_bound(ans.begin(), ans.end(), a[i]) - ans.begin();
+                ans[index] = a[i];
+            }
+        }
+        return ans.size();
+    }
+
     // Function to find length of longest increasing subsequences
     int longestSubsequence(int n, int a[])
     {
@@ -80,6 +127,8 @@ public:
         // vector<vector<int>> dp(n, vector<int>(n + 1, -1));
         // return solveMemo(n, a, 0, -1, dp);
 
-        return solveTab(n, a);
+        // return solveTab(n, a);
+
+        return solveOptimal(n, a);
     }
 };
