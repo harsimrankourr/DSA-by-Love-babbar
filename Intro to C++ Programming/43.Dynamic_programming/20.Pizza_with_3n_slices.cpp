@@ -1,0 +1,68 @@
+/*
+We are given with 3n size of varying size
+given that your friend will take slices of pizza as follows:
+    - You will pick any slice of pizza
+    - Friend 1 will pick the next slice in anti-clock wise direction of your pizza
+    - Friend 2 will pick the next slice in the clockwise direction of your pizza
+    - Repeat untill there is no more slices of the pizza
+
+We are given with an array of slices that represent the size of pizza
+We have to return the maximum possible sum of slice sizes that you pick.
+
+Goal is to eat n slices,
+    and store the maximum possible sum of the slice size
+
+Approach
+House robber problem
+     if 1st slice is taken then 6th slice will neglected to take and the remainnig recursive call willl bw called only for (2-5)
+     if 6th slice is taken then 1st slice will neglected to take and the remainnig recursive call willl bw called only for (5-2)
+
+*/
+
+class solution
+{
+public:
+    int solve(int index, inr endIndex, vector<int> &slices, int n)
+    {
+        // base case
+        if (n == 0 || index > endIndex)
+        {
+            return 0;
+        }
+
+        int take = slices[index] + solve(index + 2, endIndex, slices, n - 1);
+        int notTake = 0 + solve(index + 1, endIndex, slices, n);
+        return max(take, notTake);
+    }
+
+    int solveMemo(int index, inr endIndex, vector<int> &slices, int n, vector<vector<int>> &dp)
+    {
+        // base case
+        if (n == 0 || index > endIndex)
+        {
+            return 0;
+        }
+
+        if (dp[index][n] != -1)
+            return dp[index][n];
+
+        int take = slices[index] + solveMemo(index + 2, endIndex, slices, n - 1, dp);
+        int notTake = 0 + solveMemo(index + 1, endIndex, slices, n, dp);
+        return dp[index][n] = max(take, notTake);
+    }
+
+    int maxSizeSlices(vector<int> &slices)
+    {
+        int k = slices.size();
+        // int case1 = solve(0, k - 2, slices, k / 3);
+        // int case2 = solve(1, k - 1, slices, k / 3);
+        // return max(case1, case2);
+
+        vector<vector<int>> dp1(k, vector<int>(k, -1));
+        int case1 = solveMemo(0, k - 2, slices, k / 3, dp1);
+
+        vector<vector<int>> dp2(k, vector<int>(k, -1));
+        int case2 = solveMemo(1, k - 1, slices, k / 3, dp2);
+        return max(case1, case2);
+    }
+};
