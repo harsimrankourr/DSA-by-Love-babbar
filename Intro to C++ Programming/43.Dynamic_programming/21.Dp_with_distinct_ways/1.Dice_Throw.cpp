@@ -5,6 +5,7 @@ We have to find the total number of distinct ways to find the sum X.
 X is the Submission of values on each face.
 */
 
+/*
 class solution
 {
 public:
@@ -77,6 +78,31 @@ public:
         return dp[d][t];
     }
 
+    long long solveSo(int d, int f, int t)
+    {
+        vector<long long> prev(t + 1, 0);
+        vector<long long> curr(t + 1, 0);
+
+        // after ananlysing base case
+        prev[0] = 1;
+
+        for (int dice = 1; dice <= d; dice++)
+        {
+            for (int target = 1; target <= t; target++)
+            {
+                long long ans = 0;
+                for (int i = 1; i <= f; i++)
+                {
+                    if (target - i >= 0)
+                        ans = ans + prev[target - i];
+                }
+                curr[target] = ans;
+            }
+            prev = curr;
+        }
+        return prev[t];
+    }
+
     long long noOfWays(int M, int N, int X)
     {
         // return solve(N, M, X);
@@ -87,3 +113,5 @@ public:
         return solveTab(N, M, X);
     }
 };
+
+*/
