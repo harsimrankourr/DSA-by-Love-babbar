@@ -15,6 +15,7 @@ Approach
             Then if at an instant target bbecomes 0 we reach at our ideal solution
 */
 
+/*
 class solution
 {
 public:
@@ -79,6 +80,31 @@ public:
         return dp[0][total / 2];
     }
 
+    bool solveSo(int N, int arr[], int total)
+    {
+        vector<int> curr(total + 1, 0);
+        vector<int> next(total + 1, 0);
+
+        curr[0] = 1;
+        next[0] = 1;
+
+        for (int index = N - 1; index >= 0; index--)
+        {
+            for (int target = 0; target <= total / 2; target++)
+            {
+                bool incl = 0;
+                if (target - arr[index] >= 0)
+                    incl = next[target - arr[index]];
+
+                bool excl = next[target - 0];
+
+                curr[target] = incl or excl;
+            }
+            next = curr;
+        }
+        return next[total / 2];
+    }
+
     int equalPartition(int N, int arr[])
     {
         int total = 0;
@@ -99,3 +125,5 @@ public:
         return solveTab(N, arr, total);
     }
 };
+
+*/
