@@ -5,7 +5,7 @@ We have to give the minimum no. of such perfect square elements.
 */
 
 /*
-class solution
+class Solution
 {
 public:
     int solve(int n)

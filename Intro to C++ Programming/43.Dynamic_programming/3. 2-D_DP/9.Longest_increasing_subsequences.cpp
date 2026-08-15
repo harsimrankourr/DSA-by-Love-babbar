@@ -4,7 +4,7 @@ We just have to find the largest length of array having increasing subsequences
 */
 
 /*
-class solution
+class Solution
 {
 public:
     int solve(int n, int a[], int curr, int prev)

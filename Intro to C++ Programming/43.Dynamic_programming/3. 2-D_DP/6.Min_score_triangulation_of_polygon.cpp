@@ -5,7 +5,7 @@ And have to return the minimum sum of the vertices.
 */
 
 /*
-class solution
+class Solution
 {
 public:
     int solve(vector<int> &v, int i, int j)

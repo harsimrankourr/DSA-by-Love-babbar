@@ -11,7 +11,7 @@ Chef can discard any dish.
 */
 
 /*
-class solution
+class Solution
 {
 public:
     int solve(vector<int> &satisfaction, int index, int time)

@@ -6,7 +6,7 @@ X is the Submission of values on each face.
 */
 
 /*
-class solution
+class Solution
 {
 public:
     long long solve(int dice, int faces, int target)

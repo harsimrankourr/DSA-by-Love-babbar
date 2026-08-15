@@ -16,7 +16,7 @@ Approach
 */
 
 /*
-class solution
+class Solution
 {
 public:
     bool solve(int index, int arr[], int N, int target)
@@ -82,8 +82,8 @@ public:
 
     bool solveSo(int N, int arr[], int total)
     {
-        vector<int> curr(total + 1, 0);
-        vector<int> next(total + 1, 0);
+        vector<int> curr(total + 1, 0); //Total/2 can alse be used here
+        vector<int> next(total + 1, 0); // total/2 can also be used here
 
         curr[0] = 1;
         next[0] = 1;

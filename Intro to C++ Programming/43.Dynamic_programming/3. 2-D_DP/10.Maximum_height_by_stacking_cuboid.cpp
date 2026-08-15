@@ -7,7 +7,7 @@ We have to return the maximum height of the stacked cuboid
 */
 
 /*
-class solution
+class Solution
 {
 public:
     bool check(vector<int> base, vector<int> newBox)

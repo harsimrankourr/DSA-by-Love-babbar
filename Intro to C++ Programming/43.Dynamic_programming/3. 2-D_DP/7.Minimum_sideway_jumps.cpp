@@ -5,7 +5,7 @@ We have to bring the frog to the nth position using minimum sideway jumps
 */
 
 /*
-class solution
+class Solution
 {
 public:
     int solve(vector<int> &obstacles, int currlane, int currpos)

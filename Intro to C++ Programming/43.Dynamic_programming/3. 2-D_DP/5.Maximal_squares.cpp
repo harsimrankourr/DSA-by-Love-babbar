@@ -5,7 +5,7 @@ we have to find thr maximum size square sub matrix with all 1's.
 */
 
 /*
-class solution
+class Solution
 {
 public:
     int solve(vector<vector<int>> mat, int i, int j, int &maxi)

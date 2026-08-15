@@ -20,7 +20,7 @@ House robber problem
 */
 
 /*
-class solution
+class Solution
 {
 public:
     int solve(int index, inr endIndex, vector<int> &slices, int n)
