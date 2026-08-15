@@ -19,6 +19,7 @@ House robber problem
 
 */
 
+/*
 class solution
 {
 public:
@@ -152,3 +153,5 @@ public:
         return solveSo(slices);
     }
 };
+
+*/
