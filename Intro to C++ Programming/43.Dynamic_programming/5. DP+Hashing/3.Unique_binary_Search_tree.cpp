@@ -3,6 +3,7 @@ We are given with an integer n
 We have to return the number of structurally unique BST's which has exactly n nodes of unique values from 1 to n
 */
 
+/*
 class Solution
 {
 public:
@@ -49,3 +50,4 @@ public:
         return solveTab(n);
     }
 };
+*/
