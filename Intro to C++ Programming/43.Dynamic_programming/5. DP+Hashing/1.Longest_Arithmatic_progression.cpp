@@ -3,6 +3,7 @@ We are given with an array arr[] of sorted integers having no duplicated
 We have to find the longest Arithmatic progression
 */
 
+/*
 class Solution
 {
 public:
@@ -98,3 +99,5 @@ public:
         return ans;
     }
 };
+
+*/
