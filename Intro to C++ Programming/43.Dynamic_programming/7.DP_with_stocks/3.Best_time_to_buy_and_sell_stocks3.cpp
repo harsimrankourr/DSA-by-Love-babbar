@@ -1,5 +1,6 @@
 // 3-D DP
 
+/*
 class Solution
 {
 public:
@@ -91,6 +92,43 @@ public:
         }
         return dp[0][1][2];
     }
+
+    int solveSo(vector<int> &prices)
+    {
+        int n = prices.size();
+
+        vector<vector<int>> curr(2, vector<int>(3, 0));
+        vector<vector<int>> next(2, vector<int>(3, 0));
+
+        for (int index = n - 1; index >= 0; index--)
+        {
+            for (int buy = 0; buy <= 1; buy++)
+            {
+                for (int limit = 1; limit <= 2; limit++)
+                {
+                    int profit = 0;
+                    if (buy)
+                    {
+                        int buyIt = -prices[index] + next[0][limit];
+                        int skipIt = 0 + next[1][limit];
+
+                        profit = max(buyIt, skipIt);
+                    }
+                    else
+                    {
+                        int sellIt = +prices[index] + next[1][limit - 1];
+                        int skipIt = 0 + next[0][limit];
+
+                        profit = max(sellIt, skipIt);
+                    }
+                    curr[buy][limit] = profit;
+                }
+            }
+            next = curr;
+        }
+        return next[1][2];
+    }
+
     int maxProfit(vector<int> &prices)
     {
         // return solve(0, 1, prices, 2);
@@ -100,6 +138,10 @@ public:
 
         // return solveMemo(0, 1, prices, 2, dp);
 
-        return solveTab(prices);
+        // return solveTab(prices);
+
+        return solveSo(prices);
     }
 };
+
+*/
