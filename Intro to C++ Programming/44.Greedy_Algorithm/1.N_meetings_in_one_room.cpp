@@ -14,7 +14,7 @@ We have to return maximum number of meetings that can be held in that room.
 class Solution
 {
 public:
-    bool cmp(pair<int, int> a, pair<int, int> b)
+    static bool cmp(pair<int, int> a, pair<int, int> b)
     {
         return a.second < b.second;
     }
