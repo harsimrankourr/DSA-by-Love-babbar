@@ -73,3 +73,42 @@ int main(){
 }
  
 //================================================================
+
+//MCQ's
+
+#include<iostream>
+using namespace std;
+
+
+int main(){
+
+
+    int first = 8;
+    int second = 18;
+    int *ptr = &second;
+    *ptr = 9;
+    cout << first << " " << second << endl;
+
+
+    return 0;
+}
+//============================================================
+
+#include<iostream>
+using namespace std;
+
+
+int main(){
+
+
+    int first = 6;
+    int *p = &first;
+    int *q = p;
+    (*q)++;
+    cout << first << endl;
+
+
+    return 0;
+}
+
+// There are many MCQs in lec 27 after half an hour 
